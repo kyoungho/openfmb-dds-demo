@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+   (c) Copyright, Real-Time Innovations, Inc. 2015.  All rights reserved.
+   No duplications, whole or partial, manual or electronic, may be made
+   without prior written permission.  Any such copies, or
+   revisions thereof, must display this notice unaltered.
+   This code contains trade secrets of Real-Time Innovations, Inc.
+-->
+<launcher xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="launcher_panel.xsd">
+    <button name="simventions">
+        <platform_filter>Windows</platform_filter>
+        <platform_filter>Unix</platform_filter>
+        <icon>Icon_InformeDDS.png</icon>
+        <tooltip>SimVentions InformeDDS:
+            InformeDDS provides insight into components on a DDS network. 
+            It can be used to monitor, inject, record, and validate messages from 
+            all components participating in a DDS domain.
+            
+            Visit the Informedds.com website for more information about how to
+            download and install the tool.
+        </tooltip>
+        <legend>SimVentions InformeDDS</legend>
+        <toolexec
+            always_enabled="true"
+            is_doc="true">http://informedds.com/downloads/</toolexec>
+        <popupmenu>
+            <menuitem>
+                <label>SimVentions Website</label>
+                <url>http://www.simventions.com</url>
+            </menuitem>
+        </popupmenu>
+    </button>
+    <button name="labview">
+    	<platform_filter>Windows</platform_filter>
+        <icon>Icon_NILabVIEWDDS_90x90.png</icon>
+        <icon32>Icon_NILabVIEWDDS_32x32.png</icon32>
+        <tooltip>RTI DDS Toolkit:
+			Developing heterogeneous distributed systems is a complex challenge.
+			RTI DDS Toolkit extends the benefits of RTI Connext solutions to
+			LabVIEW applications. RTI Connext (TM) solutions provide a flexible
+			data distribution infrastructure for integrating data sources of all
+			types. At its core is the world's leading ultra-high performance,
+			distributed networking data bus. It connects data within applications
+			as well as across devices, systems and networks. RTI Connext is
+			standards-based and an open architecture connecting devices from
+			deeply embedded real-time platforms to enterprise servers across a
+			variety of networks.
+
+			RTI DDS Toolkit is built on the Data Distribution Service (DDS)
+			standard, the leading data-centric publish/subscribe (DCPS)
+			messaging standard for integrating distributed real-time
+			applications. The VI blocks in this toolkit allow you to easily
+			publish and share data between multiple LabVIEW applications or
+			between LabVIEW and non-LabVIEW applications. 
+
+			Features at a glance:
+				- Seamless integration between LabVIEW and other applications
+				implemented in C, C++, Java, C#/.Net, and Ada
+				- Peer-to-peer data communication
+				- Dynamic peer discovery
+				- Substantially reduce application programming effort
+				- Many customizable Quality of Service parameters available
+				for fine tuning application behavior without coding
+        </tooltip>
+        <legend>RTI DDS Toolkit for NI LabVIEW®</legend>
+        <toolexec 
+            always_enabled="true" 
+            is_doc="true">https://www.rti.com/products/dds/labview</toolexec>
+        <popupmenu>
+            <menuitem>
+                <label>NI Website</label>
+                <url>http://www.ni.com/es-es.html</url>
+            </menuitem>
+        </popupmenu>
+    </button>
+    <button name="mathworks">
+        <icon>Icon_Matlab_SimulinkDDS_90x90.png</icon>
+        <icon32>Icon_Matlab_SimulinkDDS_32x32.png</icon32>
+        <tooltip>RTI DDS Support for MATLAB and Simulink:
+			The DDS Simulink® blocks and MATLAB® classes use RTI Connext DDS.
+			RTI Connext™ enables applications to seamlessly share information
+			and work together.
+
+			Blocks can be added to a Simulink model that let the model interact
+			with other DDS participants during a simulation (via RTI Connext DDS).
+			Simulink Coder™ lets you generate C/C++ code from a Simulink model,
+			and code generated from the DDS blocks will conform to the RTI
+			Connext DDS API. The generated code can then be compiled and
+			executed on any platform supported by RTI Connext DDS or
+			RTI Connext Micro DDS.
+
+			Similarly, instances of MATLAB RTI DDS classes can be created in
+			MATLAB to interact with other DDS participants during a simulation
+			(via RTI Connext DDS). C code generation is currently not supported
+			for the MATLAB RTI DDS classes.
+        </tooltip>
+        <legend>RTI DDS Support for MATLAB® and Simulink®</legend>
+        <toolexec 
+            always_enabled="true" 
+            is_doc="true">https://www.mathworks.com/hardware-support/rti-dds.html?s_tid=srchtitle</toolexec>
+        <popupmenu>
+            <menuitem>
+                <label>MathWorks Website</label>
+                <url>https://www.mathworks.com/</url>
+            </menuitem>
+        </popupmenu>
+    </button>
+
+</launcher>

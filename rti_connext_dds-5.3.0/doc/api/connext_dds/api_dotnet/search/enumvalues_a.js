@@ -1,0 +1,21 @@
+var searchData=
+[
+  ['last_5fshared_5freader_5fqueue_5fsample',['LAST_SHARED_READER_QUEUE_SAMPLE',['../group__DDSSampleFlagModule.html#gga92a707b6ae197782958c52f4687af656a7d72351f109c41c42efd04b17aa47bfe',1,'DDS']]],
+  ['latencybudget_5fqos_5fpolicy_5fid',['LATENCYBUDGET_QOS_POLICY_ID',['../group__DDSQosTypesModule.html#gga1dcd2c4088fe70cb4a7aada2ecf50299a6d695f45a761b50808a8f3988df05215',1,'DDS']]],
+  ['lifespan_5fqos_5fpolicy_5fid',['LIFESPAN_QOS_POLICY_ID',['../group__DDSQosTypesModule.html#gga1dcd2c4088fe70cb4a7aada2ecf50299ae6cbb3e9ed0fee7c6cd2ecd3ce7de036',1,'DDS']]],
+  ['liveliness_5fbased_5fremote_5fparticipant_5fpurge',['LIVELINESS_BASED_REMOTE_PARTICIPANT_PURGE',['../group__DDSDiscoveryConfigQosModule.html#gga645ca95ecd1052592e920dd8943f127ba0df459678ce7f8caccff52c1b1575ac9',1,'DDS']]],
+  ['liveliness_5fchanged_5fstatus',['LIVELINESS_CHANGED_STATUS',['../group__DDSStatusTypesModule.html#ggabb7ed73d2f725f84245a12a9fffbf1cea42e5e11e7b082d33b5b8d83e2b3e1d31',1,'DDS']]],
+  ['liveliness_5flost_5fstatus',['LIVELINESS_LOST_STATUS',['../group__DDSStatusTypesModule.html#ggabb7ed73d2f725f84245a12a9fffbf1cea201c8a42c3933681da5113cf5d38e05e',1,'DDS']]],
+  ['liveliness_5fqos_5fpolicy_5fid',['LIVELINESS_QOS_POLICY_ID',['../group__DDSQosTypesModule.html#gga1dcd2c4088fe70cb4a7aada2ecf50299a7a7890e91d212ba732884a045ba89a4b',1,'DDS']]],
+  ['lost_5fby_5favailability_5fwaiting_5ftime',['LOST_BY_AVAILABILITY_WAITING_TIME',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfaceaf09db4005bb67547d29d697987ecc1fd',1,'DDS']]],
+  ['lost_5fby_5fincomplete_5fcoherent_5fset',['LOST_BY_INCOMPLETE_COHERENT_SET',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea7019b7daedbe4d76c192b2a2834be43e',1,'DDS']]],
+  ['lost_5fby_5finstances_5flimit',['LOST_BY_INSTANCES_LIMIT',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfaceacbbdff0d7a58887dabf3f4b9c45310bb',1,'DDS']]],
+  ['lost_5fby_5flarge_5fcoherent_5fset',['LOST_BY_LARGE_COHERENT_SET',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea5bfafe928e5d6d60341a99e27ff3c8a5',1,'DDS']]],
+  ['lost_5fby_5fout_5fof_5fmemory',['LOST_BY_OUT_OF_MEMORY',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea4e35115a9eaca507c4142444dd1204c5',1,'DDS']]],
+  ['lost_5fby_5fremote_5fwriter_5fsamples_5fper_5fvirtual_5fqueue_5flimit',['LOST_BY_REMOTE_WRITER_SAMPLES_PER_VIRTUAL_QUEUE_LIMIT',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea8179d89e81acd095ea5c3637be29ea50',1,'DDS']]],
+  ['lost_5fby_5fremote_5fwriters_5fper_5finstance_5flimit',['LOST_BY_REMOTE_WRITERS_PER_INSTANCE_LIMIT',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea65dd63fc5a44a055f9b85d4ca3cf58e0',1,'DDS']]],
+  ['lost_5fby_5fremote_5fwriters_5fper_5fsample_5flimit',['LOST_BY_REMOTE_WRITERS_PER_SAMPLE_LIMIT',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea6928ddedb8aeea0f6663464af0589170',1,'DDS']]],
+  ['lost_5fby_5fsamples_5fper_5fremote_5fwriter_5flimit',['LOST_BY_SAMPLES_PER_REMOTE_WRITER_LIMIT',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea1acbcb2b965c63383904e9327f3e5efb',1,'DDS']]],
+  ['lost_5fby_5fvirtual_5fwriters_5flimit',['LOST_BY_VIRTUAL_WRITERS_LIMIT',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfacea52ccc4bff5625ec2c9d993b5f0da0f8a',1,'DDS']]],
+  ['lost_5fby_5fwriter',['LOST_BY_WRITER',['../group__DDSReaderModule.html#ggaf419010682a832e160c2c57482edfaceae8d866e6f4214f87915c7005e8e52030',1,'DDS']]]
+];

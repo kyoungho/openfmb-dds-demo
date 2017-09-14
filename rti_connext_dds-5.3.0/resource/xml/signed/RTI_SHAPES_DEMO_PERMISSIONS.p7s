@@ -1,0 +1,92 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----520A7BEABE49911459119C44E26FCF84"
+
+This is an S/MIME signed message
+
+------520A7BEABE49911459119C44E26FCF84
+Content-Type: text/plain
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../schema/dds_security_permissions.xsd">
+    <permissions>
+        <grant name="AllowAll">
+            <subject_name>/C=US/ST=CA/O=Real Time Innovations/CN=dtlsexampleECdsa/emailAddress=meECdsa@rti.com</subject_name>
+            <validity>
+                <!-- Format is CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm] in GMT -->
+                <not_before>2013-06-01T13:00:00</not_before>
+                <not_after>2033-06-01T13:00:00</not_after>
+            </validity>
+            <default>ALLOW</default>
+        </grant>
+        <grant name="SecureDenyPubCircles">
+            <subject_name>/C=US/ST=CA/O=Real Time Innovations/CN=dtlsexample2ECdsa/emailAddress=youECdsa@rti.com</subject_name>
+            <validity>
+                <!-- Format is CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm] in GMT -->
+                <not_before>2013-06-01T13:00:00</not_before>
+                <not_after>2033-06-01T13:00:00</not_after>
+            </validity>
+            <deny_rule>
+                <domains>
+                    <id>0</id>
+                </domains>
+                <publish>
+                    <topics>
+                        <topic>Circle*</topic>
+                    </topics>
+                </publish>
+            </deny_rule>
+            <default>ALLOW</default>
+        </grant>
+        <grant name="SecureDenySubSquares">
+            <subject_name>/C=US/ST=CA/O=Real Time Innovations/CN=dtlsexample3ECdsa/emailAddress=youECdsa@rti.com</subject_name>
+            <validity>
+                <!-- Format is CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm] in GMT -->
+                <not_before>2013-06-01T13:00:00</not_before>
+                <not_after>2033-06-01T13:00:00</not_after>
+            </validity>
+            <deny_rule>
+                <domains>
+                    <id>0</id>
+                </domains>
+                <subscribe>
+                    <topics>
+                        <topic>Square*</topic>
+                    </topics>
+                </subscribe>
+            </deny_rule>
+            <default>ALLOW</default>
+        </grant>
+    </permissions>
+</dds>
+------520A7BEABE49911459119C44E26FCF84
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIEFAYJKoZIhvcNAQcCoIIEBTCCBAECAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggH1MIIB8TCCAZgCCQDqxUVm3cZynjAKBggqhkjOPQQDAjCBgDEL
+MAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRQwEgYDVQQHDAtTYW50YSBDbGFyYTEe
+MBwGA1UECgwVUmVhbCBUaW1lIElubm92YXRpb25zMQ8wDQYDVQQDDAZSVEkgQ0Ex
+HTAbBgkqhkiG9w0BCQEWDnNlY3VyZUBydGkuY29tMB4XDTE3MDYyMjIxMTkzNVoX
+DTIwMDYyMTIxMTkzNVowgYAxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIG
+A1UEBwwLU2FudGEgQ2xhcmExHjAcBgNVBAoMFVJlYWwgVGltZSBJbm5vdmF0aW9u
+czEPMA0GA1UEAwwGUlRJIENBMR0wGwYJKoZIhvcNAQkBFg5zZWN1cmVAcnRpLmNv
+bTBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABHLtr4/TSW3W241wqmen/c2vgtiR
+kqUkl10h74MOAxQvI5dVMsVTqbdu4Mx1i86eIKS4L4xf59KAuJpI8kUmCXAwCgYI
+KoZIzj0EAwIDRwAwRAIgWfWB6qpIMImDZ1vLrBDlqHuO9QYN0LQR34XISrHVScEC
+IDwNMw7vo0t4BFbBodQKT6wpjCUQhpx0iFSkIO+3UDfJMYIB4zCCAd8CAQEwgY4w
+gYAxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEUMBIGA1UEBwwLU2FudGEgQ2xh
+cmExHjAcBgNVBAoMFVJlYWwgVGltZSBJbm5vdmF0aW9uczEPMA0GA1UEAwwGUlRJ
+IENBMR0wGwYJKoZIhvcNAQkBFg5zZWN1cmVAcnRpLmNvbQIJAOrFRWbdxnKeMA0G
+CWCGSAFlAwQCAQUAoIHkMBgGCSqGSIb3DQEJAzELBgkqhkiG9w0BBwEwHAYJKoZI
+hvcNAQkFMQ8XDTE3MDYyMjIxMTk0MlowLwYJKoZIhvcNAQkEMSIEIH8+kyyDckV9
+0BLxVZU1pMr4EifZu+b1291nR6Arv/P+MHkGCSqGSIb3DQEJDzFsMGowCwYJYIZI
+AWUDBAEqMAsGCWCGSAFlAwQBFjALBglghkgBZQMEAQIwCgYIKoZIhvcNAwcwDgYI
+KoZIhvcNAwICAgCAMA0GCCqGSIb3DQMCAgFAMAcGBSsOAwIHMA0GCCqGSIb3DQMC
+AgEoMAoGCCqGSM49BAMCBEcwRQIhAKRno9xyeWLqeeCx/6Mm8AqH4t5XyPYvbFqf
++vnhYxpcAiAiREbfuCOqs59JYDDjravKXjdtqoInXXAXMqrD72Itsw==
+
+------520A7BEABE49911459119C44E26FCF84--
+

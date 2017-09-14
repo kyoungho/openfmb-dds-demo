@@ -1,0 +1,37 @@
+<!-- 
+ (c) Copyright, Real-Time Innovations, 2014-2016.
+ All rights reserved.
+ No duplications, whole or partial, manual or electronic, may be made
+ without express written permission.  Any such copies, or
+ revisions thereof, must display this notice unaltered.
+ This code contains trade secrets of Real-Time Innovations, Inc.
+
+Description
+Security Governance Access Rules DTD
+-->
+
+<!ELEMENT dds (domain_access_rules)>
+<!ATTLIST dds xmlns:xsi CDATA #IMPLIED>
+<!ATTLIST dds xsi:noNamespaceSchemaLocation CDATA #IMPLIED>
+<!ATTLIST dds version CDATA "5.2.5">
+<!ELEMENT domain_access_rules (domain_rule+)>
+<!ELEMENT domain_rule (domains,allow_unauthenticated_participants,enable_join_access_control,discovery_protection_kind,liveliness_protection_kind,rtps_protection_kind,topic_access_rules)>
+<!ELEMENT domains (id|id_range)+>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT id_range (min?,max?)>
+<!ELEMENT min (#PCDATA)>
+<!ELEMENT max (#PCDATA)>
+<!ELEMENT allow_unauthenticated_participants (#PCDATA)> <!-- restriction: TRUE or FALSE -->
+<!ELEMENT enable_join_access_control (#PCDATA)> <!-- restriction: TRUE or FALSE -->
+<!ELEMENT discovery_protection_kind (#PCDATA)> <!-- restriction: ENCRYPT or SIGN or NONE -->
+<!ELEMENT liveliness_protection_kind (#PCDATA)> <!-- restriction: ENCRYPT or SIGN or NONE -->
+<!ELEMENT rtps_protection_kind (#PCDATA)> <!-- restriction: ENCRYPT or SIGN or NONE -->
+<!ELEMENT topic_access_rules (topic_rule+)>
+<!ELEMENT topic_rule (topic_expression,enable_discovery_protection,enable_liveliness_protection,enable_read_access_control,enable_write_access_control,metadata_protection_kind,data_protection_kind)>
+<!ELEMENT topic_expression (#PCDATA)>
+<!ELEMENT enable_discovery_protection (#PCDATA)> <!-- restriction: TRUE or FALSE -->
+<!ELEMENT enable_liveliness_protection (#PCDATA)> <!-- restriction: TRUE or FALSE -->
+<!ELEMENT enable_read_access_control (#PCDATA)> <!-- restriction: TRUE or FALSE -->
+<!ELEMENT enable_write_access_control (#PCDATA)> <!-- restriction: TRUE or FALSE -->
+<!ELEMENT metadata_protection_kind (#PCDATA)> <!-- restriction: ENCRYPT or SIGN or NONE -->
+<!ELEMENT data_protection_kind (#PCDATA)> <!-- restriction: ENCRYPT or SIGN or NONE -->

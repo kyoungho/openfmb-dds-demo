@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<dds  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="../xsd/rti_cloud_discovery_service.xsd">
+            
+    <cloud_discovery_service name="allDomainsUDPv4">
+        <annotation>
+            <documentation><![CDATA[
+                Forwards all domains using built-in UDPv4 transport.
+                ]]>
+            </documentation>
+        </annotation>
+
+        <transport>
+            <element>
+                <alias>udpv4</alias>
+                <receive_port>7400</receive_port>
+            </element>
+        </transport>
+
+    </cloud_discovery_service>
+    
+    <cloud_discovery_service name="allDomainsTCPv4Lan">
+        <annotation>
+            <documentation><![CDATA[
+                Forwards all domains using pre-registered TCPv4 LAN transport.
+                ]]>
+            </documentation>
+        </annotation>
+
+        <transport>
+            <element>
+                <alias>tcpv4_lan</alias>
+                <receive_port>7400</receive_port>
+            </element>
+        </transport>
+
+    </cloud_discovery_service>
+
+    <cloud_discovery_service name="allDomainsTCPv4Wan">
+        <annotation>
+            <documentation><![CDATA[
+                Forwards all domains using pre-registered TCPv4 WAN transport.
+                ]]>
+            </documentation>
+        </annotation>
+
+        <transport>
+            <element>
+                <alias>tcpv4_wan</alias>
+                <receive_port>7400</receive_port>
+            </element>
+        </transport>
+    </cloud_discovery_service>
+    
+</dds>

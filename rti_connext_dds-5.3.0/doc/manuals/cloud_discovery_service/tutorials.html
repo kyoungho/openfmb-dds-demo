@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>6. Tutorials &mdash; RTI Cloud Discovery Service 5.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="RTI Cloud Discovery Service 5.3.0 documentation" href="index.html"/>
+        <link rel="next" title="7. Troubleshooting" href="troubleshooting.html"/>
+        <link rel="prev" title="5. Usage" href="usage.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI Cloud Discovery Service
+          
+
+          
+            
+            <img src="_static/rti-logo-FINALv2-White-OrangeDot.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_concepts.html">3. Core Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">4. Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">5. Usage</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">6. Tutorials</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#example-using-a-built-in-udp-transport">6.1. Example: Using a built-in UDP transport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">6.1.1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disable-multicast">6.1.2. Disable Multicast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cds-in-action">6.1.3. <em>Cloud Discovery Service</em> in action</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-using-a-custom-listening-port">6.2. Example: Using a custom listening port</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-using-rti-tcp-transport">6.3. Example: Using RTI TCP Transport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">6.3.1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">6.3.2. <em>Cloud Discovery Service</em> in action</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-using-rti-tcp-transport-with-rti-tls-support">6.4. Example: Using RTI TCP Transport with RTI TLS Support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">6.4.1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">6.4.2. <em>Cloud Discovery Service</em> in action</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#example-using-rti-secure-wan-transport">6.5. Example: Using RTI Secure WAN Transport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">6.5.1. Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">6.5.2. <em>Cloud Discovery Service</em> in action</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">8. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">RTI Cloud Discovery Service</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>6. Tutorials</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorials">
+<span id="section-tutorials"></span><h1>6. Tutorials<a class="headerlink" href="#tutorials" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The commands shown in these examples are for the <code class="docutils literal"><span class="pre">x64Linux3gcc5.4.0</span></code>
+architecture. For simplicity, all the examples assume that all the
+applications run on the same host machine and the environment variable
+<code class="docutils literal"><span class="pre">NDDSHOME</span></code> is set to point to your <em>RTI Connext DDS</em> installation.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Some of the examples require OpenSSL libraries and you must ensure they are
+present in your library path before starting the applications.
+Example commands assume the existence of the environment variable
+<code class="docutils literal"><span class="pre">OPENSSLHOMELIB</span></code> set to the directory that contains the OpenSSL libraries.</p>
+<p>If you use the OpenSSL libraries distributed by RTI, the libraries
+directory will have the following locations:</p>
+<blockquote class="last">
+<div><ul class="simple">
+<li>On Unix: <code class="docutils literal"><span class="pre">&lt;INSTALL</span> <span class="pre">DIR&gt;</span></code>/&lt;architecture&gt;/release/lib</li>
+<li>On Windows: <code class="docutils literal"><span class="pre">&lt;INSTALL</span> <span class="pre">DIR&gt;</span></code>\&lt;architecture&gt;\release\bin</li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="example-using-a-built-in-udp-transport">
+<span id="section-example-hw-simple"></span><h2>6.1. Example: Using a built-in UDP transport<a class="headerlink" href="#example-using-a-built-in-udp-transport" title="Permalink to this headline">¶</a></h2>
+<p>This example illustrates the basic functionality of <em>Cloud Discovery Service</em>. It shows how <em>Connext
+DDS</em> applications discover each other through an instance of <em>Cloud Discovery Service</em>.</p>
+<div class="section" id="setup">
+<h3>6.1.1. Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>The first step is to have two <em>Connext DDS</em> applications that can talk to each
+other. For that, you can use an IDL file of your choice and run <em>rtiddsgen</em> to
+generate the example. For instance, you can create a file named
+<code class="docutils literal"><span class="pre">CDSHelloWorld.idl</span></code> with the following content:</p>
+<div class="highlight-c"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="n">CDSHelloWorld</span> <span class="p">{</span>
+    <span class="kt">long</span> <span class="n">count</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Generate the publisher and subscriber examples by running the following command
+(you can replace <code class="docutils literal"><span class="pre">C++03</span></code> with any other language of your choice):</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$NDDHSOME</span>/bin/rtiddsgen -language C++03  -example x64Linux3gcc5.4.0 <span class="se">\</span>
+    -ppDisable CDSHelloWorld.idl
+</pre></div>
+</div>
+<p>Modify <code class="docutils literal"><span class="pre">HelloWorld_publisher.cxx</span></code> to increase the <code class="docutils literal"><span class="pre">count</span></code> field each time
+the sample is written. For instance, you can add the following sentence in the
+main writing loop:</p>
+<div class="highlight-c++"><div class="highlight"><pre><span></span><span class="n">sample</span><span class="p">.</span><span class="n">count</span><span class="p">(</span><span class="n">count</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>To compile the generated code, run:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>make -f makefile_CDSHelloWorld_x64Linux3gcc5.4.0
+</pre></div>
+</div>
+<p>You should have two executables, <code class="docutils literal"><span class="pre">CDSHelloWorld_publisher</span></code> and
+<code class="docutils literal"><span class="pre">CDSHelloWorld_subscriber.</span></code> Now you can run the examples to make sure
+everything is fine. You need to run the examples from the directory that
+contains the generated <code class="docutils literal"><span class="pre">USER_QOS_PROFILES.xml</span></code>.</p>
+<p>From one terminal run:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./objs/x64Linux3gcc5.4.0/CDSHelloWorld_publisher
+Writing CDSHelloWorld, count <span class="m">0</span>
+Writing CDSHelloWorld, count <span class="m">1</span>
+...
+</pre></div>
+</div>
+<p>From a different terminal, run:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./objs/x64Linux3gcc5.4.0/CDSHelloWorld_subscriber
+CDSHelloWorld subscriber sleeping <span class="k">for</span> <span class="m">4</span> sec...
+<span class="o">[</span>count: <span class="m">3</span><span class="o">]</span>
+CDSHelloWorld subscriber sleeping <span class="k">for</span> <span class="m">4</span> sec...
+<span class="o">[</span>count: <span class="m">4</span><span class="o">]</span>
+...
+</pre></div>
+</div>
+<p>You should see that the subscriber application receives the samples generated
+by the publisher application. This occurs because by default, <em>DomainParticipants</em> enable
+multicast. That is, participant announcements are automatically sent to a
+multicast destination.</p>
+</div>
+<div class="section" id="disable-multicast">
+<h3>6.1.2. Disable Multicast<a class="headerlink" href="#disable-multicast" title="Permalink to this headline">¶</a></h3>
+<p>Stop the applications and disable multicast. For that, you can specify an empty
+list of initial peers by setting the environment as follows:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>export NDDS_DISCOVERY_PEERS=
+</pre></div>
+</div>
+<p>Now if you run the publisher and subscriber applications again, notice
+that the subscriber does not receive any samples:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>./objs/x64Linux3gcc5.4.0/CDSHelloWorld_subscriber
+CDSHelloWorld subscriber sleeping <span class="k">for</span> <span class="m">4</span> sec...
+CDSHelloWorld subscriber sleeping <span class="k">for</span> <span class="m">4</span> sec...
+CDSHelloWorld subscriber sleeping <span class="k">for</span> <span class="m">4</span> sec...
+...
+</pre></div>
+</div>
+<p>You can stop the applications now.</p>
+</div>
+<div class="section" id="cds-in-action">
+<h3>6.1.3. <em>Cloud Discovery Service</em> in action<a class="headerlink" href="#cds-in-action" title="Permalink to this headline">¶</a></h3>
+<p>To make the applications communicate, we need to run <em>Cloud Discovery Service</em>.
+From a terminal, run the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice
+</pre></div>
+</div>
+<p>This command will run <em>Cloud Discovery Service</em> with the built-in configuration that
+listens on port 7400 over UDP transport.</p>
+<p>Re-run the publisher and subscriber applications, but this time set the
+initial peers to talk to <em>Cloud Discovery Service</em>
+(see <a class="reference internal" href="core_concepts.html#section-domain-list-rtps-peer-descriptor"><span class="std std-numref">Section 3.2.1</span></a>). For that, you can
+set the environment from the application terminal as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@localhost:7400
+</pre></div>
+</div>
+<p>Now run the applications and verify that the subscriber receives samples. You
+can also stop <em>Cloud Discovery Service</em> and see how the applications <strong>continue communicating</strong>. In
+addition, you can start more publishers and subscribers, then see how they all
+discover each other and communicate.</p>
+</div>
+</div>
+<div class="section" id="example-using-a-custom-listening-port">
+<h2>6.2. Example: Using a custom listening port<a class="headerlink" href="#example-using-a-custom-listening-port" title="Permalink to this headline">¶</a></h2>
+<p>This example extends <a class="reference internal" href="#section-example-hw-simple"><span class="std std-ref">Example: Using a built-in UDP transport</span></a> to run <em>Cloud Discovery Service</em> on a custom
+listening port over UDP. For that, you can run <em>Cloud Discovery Service</em> as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice -transport &lt;port&gt;
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">&lt;port&gt;</span></code> represents the port number you wish. This example will use
+<code class="docutils literal"><span class="pre">10000</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice -transport <span class="m">10000</span>
+</pre></div>
+</div>
+<p>To see which exact address <em>Cloud Discovery Service</em> is using to listen for participant
+announcements, run the service with <code class="docutils literal"><span class="pre">-verbosity</span> <span class="pre">4</span></code> and look for the
+line:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>...
+<span class="o">[</span>CDS DETECTOR<span class="o">]</span> listening <span class="k">for</span> announcements on:
+    udpv4://172.17.0.2:10000
+...
+</pre></div>
+</div>
+<p>Set the initial peers accordingly to indicate where <em>Cloud Discovery Service</em> is listening:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@udpv4://172.17.0.2:10000
+</pre></div>
+</div>
+</div>
+<div class="section" id="example-using-rti-tcp-transport">
+<h2>6.3. Example: Using RTI TCP Transport<a class="headerlink" href="#example-using-rti-tcp-transport" title="Permalink to this headline">¶</a></h2>
+<p>This example extends <a class="reference internal" href="#section-example-hw-simple"><span class="std std-ref">Example: Using a built-in UDP transport</span></a> to use the RTI TCP transport
+for both discovery and user data. The example shows how to run <em>Cloud Discovery Service</em> using the
+pre-registered instance of RTI TCP transport.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To run this example, you need RTI TCP Transport, which is shipped with
+<em>RTI Connext DDS</em>.</p>
+</div>
+<div class="section" id="id1">
+<h3>6.3.1. Setup<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The first step of this example is to configure the publisher and subscriber
+applications so they communicate over the RTI TCP transport in LAN mode.
+For that, you can include the following XML code within the
+<code class="docutils literal"><span class="pre">&lt;participant_qos&gt;</span></code> tag of the file <code class="docutils literal"><span class="pre">USER_QOS_PROFILES.xml</span></code>
+generated by <em>rtiddsgen</em>.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;value&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.load_plugins<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>dds.transport.tcp.tcp1<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.library<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>nddstransporttcp<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.create_function<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>NDDS_Transport_TCPv4_create<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.server_bind_port<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>$(BIND_PORT)<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.parent.classid<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>NDDS_TRANSPORT_CLASSID_TCPV4_LAN<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+</div>
+<p>The server bind port property value is obtained from the environment variable
+<code class="docutils literal"><span class="pre">$(BIND_PORT)</span></code>. This is a convenience for this example so you can reuse the
+same file to specify a different port for the publisher and subscriber
+applications, which is required when running on the same host machine.</p>
+<p>Now you can run the applications. You need to run from the directory that
+contains the generated <code class="docutils literal"><span class="pre">USER_QOS_PROFILES.xml</span></code> you just modified.</p>
+<p>From the terminal, run:</p>
+<div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-number">Listing 6.1 </span><span class="caption-text">Publisher application</span><a class="headerlink" href="#id7" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0
+<span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7401</span>
+<span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>tcpv4_lan://localhost:7402
+
+./objs/x64Linux3gcc5.4.0/CDSHelloWorld_publisher
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-number">Listing 6.2 </span><span class="caption-text">Subscriber application</span><a class="headerlink" href="#id8" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0
+<span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7402</span>
+<span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>tcpv4_lan://localhost:7401
+
+./objs/x64Linux3gcc5.4.0/CDSHelloWorld_subscriber
+</pre></div>
+</div>
+</div>
+<p>You should see the subscriber receive samples. This is possible since in the
+initial peers list, you indicated how the applications can reach each other.</p>
+</div>
+<div class="section" id="id2">
+<h3>6.3.2. <em>Cloud Discovery Service</em> in action<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>Now you will use <em>Cloud Discovery Service</em> to provide the discovery for the applications.</p>
+<p>From a terminal, run the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0
+<span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice -transport tcpv4:7400
+</pre></div>
+</div>
+<p>This will run <em>Cloud Discovery Service</em> with the built-in configuration and override the
+transport selection to use RTI TCP with bind port <code class="docutils literal"><span class="pre">7400</span></code>.</p>
+<p>Re-run the publisher and subscriber application, but this time set
+the initial peers to talk to <em>Cloud Discovery Service</em>
+(see <a class="reference internal" href="core_concepts.html#section-domain-list-rtps-peer-descriptor"><span class="std std-numref">Section 3.2.1</span></a>). For that, you can
+set the environment from the application terminal as follows:</p>
+<div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-number">Listing 6.3 </span><span class="caption-text">Publisher application</span><a class="headerlink" href="#id9" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span> <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0
+ <span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7401</span>
+ <span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@tcpv4_lan://localhost:7400
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-number">Listing 6.4 </span><span class="caption-text">Subscriber application</span><a class="headerlink" href="#id10" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span> <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0
+ <span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7402</span>
+ <span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@tcpv4_lan://localhost:7400
+</pre></div>
+</div>
+</div>
+<p>Now run the applications and verify that the subscriber receives samples. You
+can also stop <em>Cloud Discovery Service</em> and see how the applications <strong>continue communicating</strong>.</p>
+</div>
+</div>
+<div class="section" id="example-using-rti-tcp-transport-with-rti-tls-support">
+<h2>6.4. Example: Using RTI TCP Transport with RTI TLS Support<a class="headerlink" href="#example-using-rti-tcp-transport-with-rti-tls-support" title="Permalink to this headline">¶</a></h2>
+<p>This example extends <a class="reference internal" href="#section-example-hw-simple"><span class="std std-ref">Example: Using a built-in UDP transport</span></a> to enable TLS for
+secure communication. The example shows how to run <em>Cloud Discovery Service</em> using the pre-registered
+transport instance of the RTI TCP transport with TLS enabled.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To run this example, you need the RTI TCP Transport, which is shipped with
+RTI Connext DDS. Additionally, you will need to install the optional
+packages <a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/tls_support/RTI_TLS_Support_InstallationGuide.pdf">RTI TLS support and OpenSSL</a>.</p>
+</div>
+<div class="section" id="id3">
+<h3>6.4.1. Setup<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The first step in this example is to configure the publisher and subscriber
+applications to communicate over the RTI TCP transport in LAN mode with
+TLS enabled. For that, you can include the following XML code within the
+<code class="docutils literal"><span class="pre">&lt;participant_qos&gt;</span></code> tag of the file <code class="docutils literal"><span class="pre">USER_QOS_PROFILES.xml</span></code> generated
+by <em>rtiddsgen</em>.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;value&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.load_plugins<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>dds.transport.tcp.tcp1<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.library<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>nddstransporttcp<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.create_function<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>NDDS_Transport_TCPv4_create<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.server_bind_port<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>$(BIND_PORT)<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.parent.classid<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>NDDS_TRANSPORT_CLASSID_TLSV4_LAN<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.tls.verify.ca_file<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>cacert.pem<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.tcp.tcp1.tls.identity.certificate_chain_file<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>peer1.pem<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+</div>
+<p>The server bind port property value is obtained from the environment variable
+<code class="docutils literal"><span class="pre">$(BIND_PORT)</span></code>. This is a convenience for this example so you can reuse the
+same file to specify different ports for the publisher and subscriber
+applications, which is required when running on the same host machine.</p>
+<p>You must also provide certificate files. You can obtain example certificates
+from the following links:</p>
+<ul class="simple">
+<li><a class="reference download internal" href="_downloads/cacert.pem" download=""><code class="xref download docutils literal"><span class="pre">Certificate</span> <span class="pre">authority</span></code></a></li>
+<li><a class="reference download internal" href="_downloads/peer1.pem" download=""><code class="xref download docutils literal"><span class="pre">Certificate</span> <span class="pre">chain</span></code></a></li>
+</ul>
+<p>Now you can run the applications. You need to run from the directory that
+contains the generated <code class="docutils literal"><span class="pre">USER_QOS_PROFILES.xml</span></code> that you just modified and
+the certificates.</p>
+<p>Because TLS is enabled, you must ensure that the RTI TLS Support and OpenSSL
+libraries are present in your library path before starting the applications.
+See the <a class="reference internal" href="#section-tutorials"><span class="std std-ref">beginning of this section</span></a> for a note on how
+to locate the OpenSSL libraries.</p>
+<p>From the terminal run:</p>
+<div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-number">Listing 6.5 </span><span class="caption-text">Publisher application</span><a class="headerlink" href="#id11" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+<span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7401</span>
+<span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>tlsv4_lan://localhost:7402
+
+./objs/x64Linux3gcc5.4.0/CDSHelloWorld_publisher
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-number">Listing 6.6 </span><span class="caption-text">Subscriber application</span><a class="headerlink" href="#id12" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+<span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7402</span>
+<span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>tlsv4_lan://localhost:7401
+
+./objs/x64Linux3gcc5.4.0/CDSHelloWorld_subscriber
+</pre></div>
+</div>
+</div>
+<p>You should see the subscriber receives samples. This is possible since in
+the initial peers list, you indicated how the applications can reach each other.</p>
+</div>
+<div class="section" id="id4">
+<h3>6.4.2. <em>Cloud Discovery Service</em> in action<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Now you will use <em>Cloud Discovery Service</em> to provide the discovery for the applications.
+In this case, you need to configure the transport with an instance of the
+RTI TCP transport with TLS enabled.</p>
+<p>The configuration required for this example is shown below:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;dds</span>  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+      <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;http://community.rti.com/schema/latest/rti_cloud_discovery_service.xsd&quot;</span><span class="nt">&gt;</span>
+            
+    <span class="nt">&lt;cloud_discovery_service</span> <span class="na">name=</span><span class="s">&quot;ExampleTls&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;annotation&gt;</span>
+            <span class="nt">&lt;documentation&gt;</span><span class="cp">&lt;![CDATA[ </span>
+<span class="cp">                Example that configures the pre-registered instance of the</span>
+<span class="cp">                RTI TCP transport with TLS enabled.</span>
+<span class="cp">                ]]&gt;</span>                
+            <span class="nt">&lt;/documentation&gt;</span>
+        <span class="nt">&lt;/annotation&gt;</span>
+        <span class="nt">&lt;transport&gt;</span>     
+            <span class="nt">&lt;element&gt;</span>
+                <span class="nt">&lt;alias&gt;</span>tlsv4_lan<span class="nt">&lt;/alias&gt;</span>
+                <span class="nt">&lt;receive_port&gt;</span>7400<span class="nt">&lt;/receive_port&gt;</span>
+                <span class="nt">&lt;property&gt;</span>
+                    <span class="nt">&lt;element&gt;</span>
+                        <span class="nt">&lt;name&gt;</span>dds.transport.cds.tcp1.tls.verify.ca_file<span class="nt">&lt;/name&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>cacert.pem<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>                        
+                    <span class="nt">&lt;element&gt;</span>
+                        <span class="nt">&lt;name&gt;</span>dds.transport.cds.tcp1.tls.identity.certificate_chain_file<span class="nt">&lt;/name&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>peer1.pem<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>                    
+                <span class="nt">&lt;/property&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;/transport&gt;</span>        
+    <span class="nt">&lt;/cloud_discovery_service&gt;</span>
+    
+<span class="nt">&lt;/dds&gt;</span>
+</pre></div>
+</div>
+<p>You can download the configuration file from here:
+<a class="reference download internal" href="_downloads/rti_cds_example_tls.xml" download=""><code class="xref download docutils literal"><span class="pre">rti_cds_example_tls.xml</span></code></a></p>
+<p>From a terminal, run the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$OPENSSLHOMELIB</span>
+<span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice <span class="se">\</span>
+        -cfgFile &lt;working_dir&gt;/rti_cds_example_tls.xml -cfgName ExampleTls
+</pre></div>
+</div>
+<p>This command will run <em>Cloud Discovery Service</em> with the custom configuration for this example,
+located under the directory <code class="docutils literal"><span class="pre">&lt;working_dir&gt;.</span></code></p>
+<p>Re-run the publisher and subscriber applications, but this time set the
+initial peers to talk to <em>Cloud Discovery Service</em>
+(see <a class="reference internal" href="core_concepts.html#section-domain-list-rtps-peer-descriptor"><span class="std std-numref">Section 3.2.1</span></a>). For that, you can
+set the environment from the application terminal as follows:</p>
+<div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-number">Listing 6.7 </span><span class="caption-text">Publisher application</span><a class="headerlink" href="#id13" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span> <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+ <span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7401</span>
+ <span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@tlsv4_lan://localhost:7400
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-number">Listing 6.8 </span><span class="caption-text">Subscriber application</span><a class="headerlink" href="#id14" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span> <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+ <span class="nb">export</span> <span class="nv">BIND_PORT</span><span class="o">=</span><span class="m">7402</span>
+ <span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@tlsv4_lan://localhost:7400
+</pre></div>
+</div>
+</div>
+<p>Now run the applications and verify that the subscriber receives samples. You
+can also stop <em>Cloud Discovery Service</em> and see how the applications <strong>continue communicating</strong>.</p>
+</div>
+</div>
+<div class="section" id="example-using-rti-secure-wan-transport">
+<h2>6.5. Example: Using RTI Secure WAN Transport<a class="headerlink" href="#example-using-rti-secure-wan-transport" title="Permalink to this headline">¶</a></h2>
+<p>This example extends <a class="reference internal" href="#section-example-hw-simple"><span class="std std-ref">Example: Using a built-in UDP transport</span></a> to use the RTI Secure
+WAN transport for communication. The example shows how to run <em>Cloud Discovery Service</em> with
+a user-registered transport instance of the RTI Secure WAN transport.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To run this example you will need
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/secure_wan_transport/RTI_Secure_WAN_Transport_InstallationGuide.pdf">RTI Secure Wan Transport</a> and its dependencies.
+Because DTLS is enabled, you must ensure that OpenSSL libraries are present in
+your library path before starting the applications. See the
+<a class="reference internal" href="#section-tutorials"><span class="std std-ref">beginning of this section</span></a> for a note on how to locate
+the OpenSSL libraries.</p>
+</div>
+<p>The provided example uses the WAN transport with security disabled. The WAN
+transport relies on a rendezvous server based on the STUN protocol in order to
+locate peers and establish communication. You can run the WAN server as follows:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="si">${</span><span class="nv">NDDSHOME</span><span class="si">}</span>/bin/rtiwanserver -address &lt;address&gt; -port &lt;port&gt;
+</pre></div>
+</div>
+<p>Where <code class="docutils literal"><span class="pre">&lt;address&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;port&gt;</span></code> define where the WAN server listens and how the
+publisher and subscriber applications can reach it. In this example, the values
+for the address and port are <code class="docutils literal"><span class="pre">127.0.0.1</span></code> and 3478, respectively.</p>
+<p>You will need the WAN server to running for all the applications to communicate.</p>
+<div class="section" id="id5">
+<h3>6.5.1. Setup<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The first step in this example is to configure the publisher and subscriber
+applications to communicate over the RTI Secure WAN transport. For that, you
+can include the following XML code within the <code class="docutils literal"><span class="pre">&lt;participant_qos&gt;</span></code> tag of the
+file <code class="docutils literal"><span class="pre">USER_QOS_PROFILES.xml</span></code> generated by <em>rtiddsgen</em>.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;value&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.load_plugins<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>dds.transport.wan_plugin.wan<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.library<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>nddstransportwan<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.create_function<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>NDDS_Transport_WAN_create<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.server<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>127.0.0.1<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.transport_instance_id<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>$(WAN_ID)<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+</div>
+<p>The WAN ID property value is obtained from the environment variable
+<code class="docutils literal"><span class="pre">$(WAN_ID)</span></code>. This is a convenience for this example so you can specify a
+different ID for the publisher and subscriber without having to modify the file.</p>
+<p>Now you can run the applications. You need to run from the directory that
+contains the generated <code class="docutils literal"><span class="pre">USER_QOS_PROFILES.xml</span></code> that you just modified.</p>
+<div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-number">Listing 6.9 </span><span class="caption-text">Publisher application</span><a class="headerlink" href="#id15" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+<span class="nb">export</span> <span class="nv">WAN_ID</span><span class="o">=</span><span class="m">2</span>
+<span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>wan://::3:127.0.0.1
+
+./objs/x64Linux3gcc5.4.0/CDSHelloWorld_publisher
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-number">Listing 6.10 </span><span class="caption-text">Subscriber application</span><a class="headerlink" href="#id16" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+<span class="nb">export</span> <span class="nv">WAN_ID</span><span class="o">=</span><span class="m">3</span>
+<span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>wan://::2:127.0.0.1
+
+./objs/x64Linux3gcc5.4.0/CDSHelloWorld_subscriber
+</pre></div>
+</div>
+</div>
+<p>You should see the subscriber receive samples. This is possible since in
+the initial peers list, you indicated how the applications can reach each other.</p>
+</div>
+<div class="section" id="id6">
+<h3>6.5.2. <em>Cloud Discovery Service</em> in action<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>Now you will use <em>Cloud Discovery Service</em> to provide discovery for the applications. In this
+case, you need to configure the transport with a user-registered instance of
+the RTI Secure WAN transport.</p>
+<p>The configuration required for this example is shown below:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;dds</span>  <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+      <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;http://community.rti.com/schema/latest/rti_cloud_discovery_service.xsd&quot;</span><span class="nt">&gt;</span>
+            
+    <span class="nt">&lt;cloud_discovery_service</span> <span class="na">name=</span><span class="s">&quot;ExampleWan&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;annotation&gt;</span>
+            <span class="nt">&lt;documentation&gt;</span><span class="cp">&lt;![CDATA[ </span>
+<span class="cp">                Example that configures an user-registered instance of the</span>
+<span class="cp">                RTI WAN transport.</span>
+<span class="cp">                ]]&gt;</span>                
+            <span class="nt">&lt;/documentation&gt;</span>
+        <span class="nt">&lt;/annotation&gt;</span>
+        <span class="nt">&lt;transport&gt;</span>     
+            <span class="nt">&lt;element&gt;</span>
+                <span class="nt">&lt;alias&gt;</span>wan<span class="nt">&lt;/alias&gt;</span>
+                <span class="nt">&lt;receive_port&gt;</span>7400<span class="nt">&lt;/receive_port&gt;</span>
+                <span class="nt">&lt;property&gt;</span>
+                    <span class="nt">&lt;element&gt;</span>
+                        <span class="nt">&lt;name&gt;</span>dds.transport.load_plugins<span class="nt">&lt;/name&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>dds.transport.wan_plugin.wan<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;element&gt;</span>
+                        <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.library<span class="nt">&lt;/name&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>nddstransportwan<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;element&gt;</span>
+                        <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.create_function<span class="nt">&lt;/name&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>NDDS_Transport_WAN_create<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;element&gt;</span>
+                        <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.server<span class="nt">&lt;/name&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>127.0.0.1<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>
+                    <span class="nt">&lt;element&gt;</span>
+                        <span class="nt">&lt;name&gt;</span>dds.transport.wan_plugin.wan.transport_instance_id<span class="nt">&lt;/name&gt;</span>
+                        <span class="nt">&lt;value&gt;</span>1<span class="nt">&lt;/value&gt;</span>
+                    <span class="nt">&lt;/element&gt;</span>                    
+                <span class="nt">&lt;/property&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;/transport&gt;</span>        
+    <span class="nt">&lt;/cloud_discovery_service&gt;</span>
+    
+<span class="nt">&lt;/dds&gt;</span>
+</pre></div>
+</div>
+<p>You can download the configuration file from here:
+<a class="reference download internal" href="_downloads/rti_cds_example_wan.xml" download=""><code class="xref download docutils literal"><span class="pre">rti_cds_example_wan.xml</span></code></a></p>
+<p>From a terminal, run the following command:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice <span class="se">\</span>
+        -cfgFile &lt;working_dir&gt;/rti_cds_example_wan.xml -cfgName ExampleWan
+</pre></div>
+</div>
+<p>This command will run <em>Cloud Discovery Service</em> with the custom configuration for this example,
+located under the directory <code class="docutils literal"><span class="pre">&lt;working_dir&gt;</span></code>.</p>
+<p>Re-run the publisher and subscriber application, but this time set the
+initial peers to talk to <em>Cloud Discovery Service</em>
+(see <a class="reference internal" href="core_concepts.html#section-domain-list-rtps-peer-descriptor"><span class="std std-numref">Section 3.2.1</span></a>). For that, you can
+set the environment in the application terminal as follows:</p>
+<div class="literal-block-wrapper docutils container" id="id17">
+<div class="code-block-caption"><span class="caption-number">Listing 6.11 </span><span class="caption-text">Publisher application</span><a class="headerlink" href="#id17" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span> <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+ <span class="nb">export</span> <span class="nv">WAN_ID</span><span class="o">=</span><span class="m">2</span>
+ <span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@wan://::1:127.0.0.1:7400
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id18">
+<div class="code-block-caption"><span class="caption-number">Listing 6.12 </span><span class="caption-text">Subscriber application</span><a class="headerlink" href="#id18" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span> <span class="nb">export</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="nv">$NDDSHOME</span>/lib/x64Linux3gcc5.4.0:<span class="nv">$OPENSSLHOMELIB</span>
+ <span class="nb">export</span> <span class="nv">WAN_ID</span><span class="o">=</span><span class="m">3</span>
+ <span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@wan://::1:127.0.0.1:7400
+</pre></div>
+</div>
+</div>
+<p>Now run the applications and verify that the subscriber receives samples. You
+can also stop <em>Cloud Discovery Service</em> and see how the applications <strong>continue communicating</strong>.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="7. Troubleshooting" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="usage.html" class="btn btn-neutral" title="5. Usage" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Real-Time Innovations, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

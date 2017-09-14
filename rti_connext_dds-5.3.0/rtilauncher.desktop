@@ -1,0 +1,12 @@
+[Desktop Entry]
+Version=5.3.0
+Name=RTI Launcher
+GenericName=RTI Launcher
+Exec="/home/aodermatt/github/openfmb/rti_connext_dds-5.3.0/bin/rtilauncher" %f
+Terminal=false
+Hidden=false
+Icon=/home/aodermatt/github/openfmb/rti_connext_dds-5.3.0/resource/app/app_support/launcher/icons/rti_icon256.png
+Type=Application
+Categories=Development
+MimeType=application/rti-package
+

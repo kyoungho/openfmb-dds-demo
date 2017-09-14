@@ -1,0 +1,143 @@
+<launcher xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xsi:noNamespaceSchemaLocation="launcher_panel.xsd">
+    
+    <button name="rtiddsprototyper">
+        <icon>Prototyper90.gif</icon>
+        <icon32>prototyper_32x32.gif</icon32>
+        <tooltip>RTI DDS Prototyper:
+            Command-line utility to prototype, exercise, or test a DDS System.
+            Automatically create Topics, DataWriters and DataReaders.
+            Publish and subscribe to data. Generate specific data values.
+            Process data, verify values and produce other data as a result.
+        </tooltip>
+        <legend>DDS Prototyper</legend>
+        <dialog>
+            <class>com.rti.tools.launcher.dialog.PrototyperUtilityDialog</class>
+            <title>RTI DDS Prototyper</title>
+            <advanced_dialog>com.rti.tools.launcher.dialog.PrototyperAdvancedDialog</advanced_dialog>
+            <service_name>RTI DDS Prototyper</service_name>
+            <service_dirname>prototyper</service_dirname>
+            <workdir_init>prototyper</workdir_init>
+            <service_xml_tag>domain_participant</service_xml_tag>
+            <service_library_xml_tag>domain_participant_library</service_library_xml_tag>
+            <config_path>resource/xml/RTI_PROTOTYPER_QOS_PROFILES.xml</config_path>
+            <user_config_filename>USER_QOS_PROFILES.xml</user_config_filename>
+        </dialog>
+        <toolexec>bin/rtiddsprototyper</toolexec>
+        <popupmenu>
+            <menuitem>
+                <label>Command help</label>
+                <options>-help</options>
+            </menuitem>
+            <menuitem>
+                <label>Getting Started Guide (PDF, local)</label>
+                <doc>manuals/connext_dds/prototyper/RTI_ConnextDDS_CoreLibraries_Prototyper_GettingStarted.pdf</doc>
+            </menuitem>
+            <menuitem>
+                <label>Getting Started Guide (PDF, on-line)</label>
+                <url>https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/prototyper/RTI_ConnextDDS_CoreLibraries_Prototyper_GettingStarted.pdf</url>
+            </menuitem>
+        </popupmenu>
+    </button>
+    
+    <button name="clouddiscoveryservice">
+        <icon>clouddiscovery_90.png</icon>
+        <icon32>clouddiscovery_32x32.png</icon32>
+        <tooltip>Cloud Discovery Service:
+        Cloud Discovery Service enables discovery in cloud-based 
+        environments, where multicast may not be available. 
+        Maintains a list of DomainParticipants in a domain. The 
+        participant list is updated dynamically when participants 
+        join and leave the network, shielding users from statically
+        configuring and updating their system participant information.</tooltip>
+        <legend>Cloud Discovery Service</legend>
+        <dialog>
+            <class>com.rti.tools.launcher.dialog.CloudDiscoveryServiceDialog</class>
+            <title>Cloud Discovery Service</title>
+            <advanced_dialog>com.rti.tools.launcher.dialog.CloudDiscoveryAdvancedDialog</advanced_dialog>
+            <service_name>RTI Cloud Discovery Service</service_name>
+            <service_dirname>cloud_discovery_service</service_dirname>
+            <workdir_init>cloud_discovery_service</workdir_init>
+            <service_xml_tag>cloud_discovery_service</service_xml_tag>
+            <config_path>resource/xml/RTI_CLOUD_DISCOVERY_SERVICE.xml</config_path>
+            <user_config_filename>USER_CLOUD_DISCOVERY_SERVICE.xml</user_config_filename>
+        </dialog>
+        <toolexec>bin/rticlouddiscoveryservice</toolexec>
+        <popupmenu>
+            <menuitem>
+                <label>Command help</label>
+                <options>-help</options>
+            </menuitem>
+            <menuitem>
+                <label>User's Manual - (HTML, on-line)</label>
+                <url>https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/cloud_discovery_service/index.html
+                </url>
+            </menuitem>
+            <menuitem>
+                <label>User's Manual - (HTML, local)</label>
+                <doc>manuals/cloud_discovery_service/index.html</doc>
+            </menuitem>
+            <menuitem>
+                <label>Tutorials - (HTML, on-line)</label>
+                <url>https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/cloud_discovery_service/tutorials.html
+                </url>
+            </menuitem>
+            <menuitem>
+                <label>Release Notes - (HTML, on-line)</label>
+                <url>https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/cloud_discovery_service/release_notes.html
+                </url>
+            </menuitem>
+            <menuitem>
+                <label>Release Notes - (HTML, local)</label>
+                <doc>manuals/cloud_discovery_service/release_notes.html</doc>
+            </menuitem>
+        </popupmenu>
+    </button>
+    <button name="systemdesigner">
+        <icon>SystemDesigner90.png</icon>
+        <icon32>systemdesigner_32x32.png</icon32>
+        <tooltip>System Designer:
+        RTI System Designer is a tool that allows you to graphically 
+        design and configure Connext DDS systems. 
+        You can see it as a User Interface to XML-Based Application 
+        Creation, a technology allows you to specify all the aspects 
+        of a DDS System in XML format, including:
+        * The Data Types that will be used to communicate information 
+          in the system
+        * The Topics that will be used in the domain, associating each 
+          Topic with a Data Type
+        * A named set of DomainParticipants that can be used to 
+          communicate within DDS domains
+        * The DataWriters and DataReaders present within each 
+          DomainParticipant, each associated with its corresponding Topic.</tooltip>
+        <legend>System Designer</legend>
+        <toolexec 
+            always_enabled="true" 
+            is_doc="true">https://community.rti.com/downloads/experimental/system-designer</toolexec>
+        <popupmenu>
+            <menuitem>
+                <label>Online Demo</label>
+                <url>http://demo.rti.com/system-designer</url>
+            </menuitem>
+        </popupmenu>
+    </button>
+    <button name="connector">
+        <icon>Connector90.png</icon>
+        <icon32>connector_32x32.png</icon32>
+        <tooltip>Connector:
+        RTI Connector for Connext DDS is a quick and easy way to access 
+        the power and functionality of RTI Connext DDS from a variety 
+        of different scripting languages, including JavaScript, Python 
+        and Lua.</tooltip>
+        <legend>Connector</legend>
+        <toolexec 
+            always_enabled="true" 
+            is_doc="true">https://community.rti.com/downloads/experimental/rticonnextdds-connector</toolexec>
+        <popupmenu>
+            <menuitem>
+                <label>GitHub Repository</label>
+                <url>https://github.com/rticommunity/rticonnextdds-connector</url>
+            </menuitem>
+        </popupmenu>
+    </button>
+</launcher>

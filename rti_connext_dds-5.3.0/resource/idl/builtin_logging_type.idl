@@ -1,0 +1,55 @@
+/* $Id$
+
+ (c) Copyright, Real-Time Innovations, 2014-2016.
+ All rights reserved.
+ No duplications, whole or partial, manual or electronic, may be made
+ without express written permission.  Any such copies, or
+ revisions thereof, must display this notice unaltered.
+ This code contains trade secrets of Real-Time Innovations, Inc.
+
+=========================================================================== */
+
+#define BUILTIN_TOPIC_KEY_TYPE_NATIVE long
+
+module DDSSecurity {
+    struct Time_t {
+        long sec;
+        unsigned long nanosec;
+    }; //@top-level false
+       //@Extensibility FINAL_EXTENSIBILITY
+
+    enum LoggingLevel {
+        EMERGENCY_LEVEL, // System is unusable. Should not continue use.
+        ALERT_LEVEL, // Should be corrected immediately
+        CRITICAL_LEVEL, // A failure in primary application.
+        ERROR_LEVEL, // General error conditions
+        WARNING_LEVEL, // May indicate future error if action not taken.
+        NOTICE_LEVEL, // Unusual, but nor erroneous event or condition.
+        INFORMATIONAL_LEVEL, // Normal operational. Requires no action.
+        DEBUG_LEVEL
+    };
+
+    struct NameValuePair {
+        string name;
+        string value;
+    }; //@Extensibility FINAL_EXTENSIBILITY
+
+    struct StructuredDataMapEntry {
+        string key;
+        sequence<NameValuePair> pairs;
+    }; //@Extensibility FINAL_EXTENSIBILITY
+
+    struct BuiltinLoggingType {
+        octet facility; // Set to 0x10. Indicates sec/auth msgs
+        LoggingLevel severity;
+        Time_t timestamp; // Since epoch 1970-01-01 00:00:00 +0000 (UTC)
+        string hostname; // IP host name of originator
+        string hostip; // IP address of originator
+        string appname; // Identify the device or application
+        string procid; // Process name/ID for syslog system
+        string msgid; // Identify the type of message
+        string message; // Free-form message
+    // Note that certain string keys (SD-IDs) are reserved by IANA
+        sequence<StructuredDataMapEntry> structured_data;
+    }; //@Extensibility FINAL_EXTENSIBILITY
+};

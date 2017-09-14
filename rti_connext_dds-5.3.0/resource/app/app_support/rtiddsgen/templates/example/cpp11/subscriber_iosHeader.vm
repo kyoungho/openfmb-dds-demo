@@ -1,0 +1,45 @@
+##/* $Id$
+##
+##   (c) Copyright, Real-Time Innovations, Inc. 2015.  All rights reserved.
+##   No duplications, whole or partial, manual or electronic, may be made
+##   without prior written permission.  Any such copies, or
+##   revisions thereof, must display this notice unaltered.
+##   This code contains trade secrets of Real-Time Innovations, Inc.
+##
+##modification history:
+##---------------------
+##2.2.3,23sep15,djs created 
+##========================================================================*/*#
+${envMap.POUND_CHAR}include <dds/dds.hpp> 
+${envMap.POUND_CHAR}include <rti/core/ListenerBinder.hpp>
+
+${envMap.POUND_CHAR}include "${envMap.idlFileName}.hpp"
+
+class ${constructMap.nativeFQName}ReaderListener : public dds::sub::NoOpDataReaderListener<${constructMap.nativeFQName}> {
+public:
+   
+    ${constructMap.nativeFQName}ReaderListener() : count_ (0)
+    {
+    }
+
+    void on_data_available(dds::sub::DataReader<${constructMap.nativeFQName}>& reader);
+   
+    int count() const
+    {
+        return count_;
+    }
+
+private:
+    int count_;
+};
+
+class SubscriberApp {
+public:
+    SubscriberApp();
+    void setup(int domainId);
+    
+private:
+    dds::sub::DataReader<${constructMap.nativeFQName}> reader;
+    rti::core::ListenerBinder<dds::sub::DataReader<${constructMap.nativeFQName}> > listener_binder;
+};
+

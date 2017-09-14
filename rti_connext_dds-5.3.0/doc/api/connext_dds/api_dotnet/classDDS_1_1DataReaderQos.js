@@ -1,0 +1,28 @@
+var classDDS_1_1DataReaderQos =
+[
+    [ "equals", "group__DDSReaderModule.html#gad4b50e144778a89819f96662a3b3d682", null ],
+    [ "durability", "classDDS_1_1DataReaderQos.html#ac081b32b8ab38fb3455c85f5be5bdc23", null ],
+    [ "deadline", "classDDS_1_1DataReaderQos.html#a1af0944760629e848b12e21b702fb997", null ],
+    [ "latency_budget", "classDDS_1_1DataReaderQos.html#abbbc67354ff950296117db837f64507c", null ],
+    [ "liveliness", "classDDS_1_1DataReaderQos.html#a31c5b776cd8c7e8ee3c620ce40841a8f", null ],
+    [ "reliability", "classDDS_1_1DataReaderQos.html#aa6d947bdc40293a4cc44529a1bddb193", null ],
+    [ "destination_order", "classDDS_1_1DataReaderQos.html#af74fe32394a7dfefda1a697c0c354733", null ],
+    [ "history", "classDDS_1_1DataReaderQos.html#a065132bcbe7400fd414de1ace00b9f9e", null ],
+    [ "resource_limits", "classDDS_1_1DataReaderQos.html#a26c19ed321873a06396e11e9362871e1", null ],
+    [ "user_data", "classDDS_1_1DataReaderQos.html#a3ba7d7222a15cfe59383dca86855a0c0", null ],
+    [ "ownership", "classDDS_1_1DataReaderQos.html#a78a7a15c7a928b8a0b61a6bdcafa11f6", null ],
+    [ "time_based_filter", "classDDS_1_1DataReaderQos.html#a4542dcfc7fb1e6262751b178881f6bd0", null ],
+    [ "reader_data_lifecycle", "classDDS_1_1DataReaderQos.html#a18d1c2dcbf8b1515436bb821a41d4229", null ],
+    [ "transport_priority", "classDDS_1_1DataReaderQos.html#ab66acc0ed086e3d7e73d6bc931b07dcf", null ],
+    [ "type_consistency", "classDDS_1_1DataReaderQos.html#a28824695b43523cd8d05c571437a243e", null ],
+    [ "reader_resource_limits", "classDDS_1_1DataReaderQos.html#a086476905c2e7ccc64a4545cf5182c01", null ],
+    [ "protocol", "classDDS_1_1DataReaderQos.html#a482f2efa8ddfdb297ba3981aa8eb266f", null ],
+    [ "transport_selection", "classDDS_1_1DataReaderQos.html#a056160005cf434e0b626655cc39db333", null ],
+    [ "unicast", "classDDS_1_1DataReaderQos.html#afd0133453400dfba6d5e764a4af6f044", null ],
+    [ "multicast", "classDDS_1_1DataReaderQos.html#a94302b3c55904142e3b91fe2090e229d", null ],
+    [ "property_qos", "classDDS_1_1DataReaderQos.html#ae97b56bab9d1adfdb6a2a0ce8edc81a4", null ],
+    [ "service", "classDDS_1_1DataReaderQos.html#ae4be283c05bae42b0b1aca0d1c00100e", null ],
+    [ "availability", "classDDS_1_1DataReaderQos.html#a8c6f4d01590c0761a593821da1d9c89b", null ],
+    [ "subscription_name", "classDDS_1_1DataReaderQos.html#a08d81386f41a519c02ac8fd6d282e787", null ],
+    [ "type_support", "classDDS_1_1DataReaderQos.html#a0adbca1d82dc252c1ae9de942d94fb1d", null ]
+];

@@ -1,0 +1,88 @@
+MIME-Version: 1.0
+Content-Type: multipart/signed; protocol="application/x-pkcs7-signature"; micalg="sha-256"; boundary="----32AFB4547F710B4BF8CFF42E90D8E1F0"
+
+This is an S/MIME signed message
+
+------32AFB4547F710B4BF8CFF42E90D8E1F0
+Content-Type: text/plain
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<dds xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://community.rti.com/schema/5.2.7/dds_security_permissions.xsd">
+    <permissions>
+        <grant name="Reliable">
+            <subject_name>/C=US/ST=CA/O=Real Time Innovations/CN=openfmbexample/emailAddress=support@rti.com</subject_name>
+            <validity>
+                <!-- Format is CCYY-MM-DDThh:mm:ss[Z|(+|-)hh:mm] in GMT -->
+                <not_before>2013-06-01T13:00:00</not_before>
+                <not_after>2033-06-01T13:00:00</not_after>
+            </validity>
+            <allow_rule>
+                <domains>
+                    <id>0</id>
+                </domains>
+                <publish>
+                    <topics>
+                        <topic>RecloserEventProfile</topic>
+                        <topic>RecloserReadingProfile</topic>
+                    </topics>
+                </publish>
+                <subscribe>
+                    <topics>
+                        <topic>RecloserControlProfile</topic>
+                        <topic>BatteryReadingProfile</topic>
+                        <topic>ResourceReadingProfile</topic>
+                        <topic>SolarReadingProfile</topic>
+                    </topics>
+                </subscribe>
+            </allow_rule>
+            <default>DENY</default>
+        </grant>
+    </permissions>
+</dds>
+
+
+------32AFB4547F710B4BF8CFF42E90D8E1F0
+Content-Type: application/x-pkcs7-signature; name="smime.p7s"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="smime.p7s"
+
+MIIGXwYJKoZIhvcNAQcCoIIGUDCCBkwCAQExDzANBglghkgBZQMEAgEFADALBgkq
+hkiG9w0BBwGgggOCMIIDfjCCAmYCCQDhclgogz+njjANBgkqhkiG9w0BAQsFADCB
+gDELMAkGA1UEBhMCVVMxCzAJBgNVBAgMAkNBMRQwEgYDVQQHDAtTYW50YSBDbGFy
+YTEeMBwGA1UECgwVUmVhbCBUaW1lIElubm92YXRpb25zMQ8wDQYDVQQDDAZSVEkg
+Q0ExHTAbBgkqhkiG9w0BCQEWDnNlY3VyZUBydGkuY29tMB4XDTE3MDYxNjE0Mzcy
+OVoXDTI3MDYxNDE0MzcyOVowgYAxCzAJBgNVBAYTAlVTMQswCQYDVQQIDAJDQTEU
+MBIGA1UEBwwLU2FudGEgQ2xhcmExHjAcBgNVBAoMFVJlYWwgVGltZSBJbm5vdmF0
+aW9uczEPMA0GA1UEAwwGUlRJIENBMR0wGwYJKoZIhvcNAQkBFg5zZWN1cmVAcnRp
+LmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAMMDMwc8RWLszp8H
+uMhQBDJAB7YLo6a6VTkLeficfQOuPSzl9OiwZhMd77Aye4I2eQolnowcY1Wnftuz
+iHjql1ZAo3bC3YX+/MRe+Yq1sMruLkQfj4cQXbprY5Ac9VTTCGKJxQKbnKDaicu/
+EIP977dLymkfXCdhnnTTz0xElvFyLIReUnRWV+K7U0cReTeJvsPTy+/aYJwxq8yc
+OyYuazGF4UE/9bWB5d5sg4PxAx4GqLzQa4z4j27jNhbc6rAHploH2nDugqU/E7Iz
+hdFa4mZbQrbq1loj2TkVXLXbKmcGP3XtJvs7qBc5cT0KkW8YiRrNVYYaR9jUw2xQ
+Myk8uLkCAwEAATANBgkqhkiG9w0BAQsFAAOCAQEAsAwWu2SO/oNGnOUHxZUmhdpa
+3YKwvgiCk85OrHIaa7X/VQdXa3f29Kg7n5E5j5vO6EIHBBdBowI2rjrhrmbAgMy5
+sBejFNQIFEJ/KZQ33/TeYH8b0erhKV2i/4bI3mRnx0ABINcr4nVM+4f7EX3nmc1s
+/HIAimzAHj2YXotybuZ0dWworaecKhK6pEcJNBb1os6o8crJTIvoz17qpqNGgeZH
+9Q2r6eXuxPHd4lVEx/baWYz3Xe0T0WgfoGQMVYVcM80rvHnvxsogDaOL/ELp1bEs
+GNgROupf6gqm7fTLdwCyivulZcy9VlKAvRRV6kEHOABcoJEJfvQvNy/8lvyg3TGC
+AqEwggKdAgEBMIGOMIGAMQswCQYDVQQGEwJVUzELMAkGA1UECAwCQ0ExFDASBgNV
+BAcMC1NhbnRhIENsYXJhMR4wHAYDVQQKDBVSZWFsIFRpbWUgSW5ub3ZhdGlvbnMx
+DzANBgNVBAMMBlJUSSBDQTEdMBsGCSqGSIb3DQEJARYOc2VjdXJlQHJ0aS5jb20C
+CQDhclgogz+njjANBglghkgBZQMEAgEFAKCB5DAYBgkqhkiG9w0BCQMxCwYJKoZI
+hvcNAQcBMBwGCSqGSIb3DQEJBTEPFw0xNzA2MTYxNzIyNDlaMC8GCSqGSIb3DQEJ
+BDEiBCAES/ZbGfnl1GpZefZLf64mCi79XV445d2gjqRFZdCvLDB5BgkqhkiG9w0B
+CQ8xbDBqMAsGCWCGSAFlAwQBKjALBglghkgBZQMEARYwCwYJYIZIAWUDBAECMAoG
+CCqGSIb3DQMHMA4GCCqGSIb3DQMCAgIAgDANBggqhkiG9w0DAgIBQDAHBgUrDgMC
+BzANBggqhkiG9w0DAgIBKDANBgkqhkiG9w0BAQEFAASCAQDAs54ELzM8JsNXCdFt
+gDGteDDa/zSx0osXU7m4Yx8XauFFEU5EVSXrBpzEFlHPHg9yGQ51j+mEjhwMlyY4
+EmneqbSAjenLOzd5nwRgagzEjnvJTAi53IqWyOVQ6r3eMdS7PnBIiC2ZZiYqVL2h
++Syfskmz0F8LEUYY96GfcABiUSK4W8b899tliDbftqvsuZ7XFgiLZkz+kJ/Wph3j
+gqXHBWrwKycQoVzXNUUiU9qD2sdykDPy3MhYml2pD3zzDoE1/seHsM69ELAOpkWB
+k9OA9wcKSnz11612ce005y5LJNLV5/oBbGRHMFcQ5utxTfNcG4YeM27nAMJx276Z
+Aokz
+
+------32AFB4547F710B4BF8CFF42E90D8E1F0--
+

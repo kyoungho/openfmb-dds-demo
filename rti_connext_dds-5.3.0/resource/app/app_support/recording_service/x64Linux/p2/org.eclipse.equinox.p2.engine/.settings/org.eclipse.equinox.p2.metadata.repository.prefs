@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/description=
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/enabled=true
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/isSystem=false
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/name=module-metadata-repository@/ssd/atlassian/RTI/TOOLBRAN-RECSERVCON-JOB1/recording_console.1.0/srcJava/com.rti.tools.ddr.deploy/target
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/provider=
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/suffix=p2content.xml
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/type=org.eclipse.tycho.repository.module.ModuleMetadataRepository
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/uri=file\:/ssd/atlassian/RTI/TOOLBRAN-RECSERVCON-JOB1/recording_console.1.0/srcJava/com.rti.tools.ddr.deploy/target/
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target/version=1.0.0
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target_targetPlatformRepository/enabled=true
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target_targetPlatformRepository/isSystem=false
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target_targetPlatformRepository/name=TychoTargetPlatform
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target_targetPlatformRepository/suffix=content.xml
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target_targetPlatformRepository/type=org.eclipse.equinox.internal.p2.metadata.repository.LocalMetadataRepository
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target_targetPlatformRepository/uri=file\:/ssd/atlassian/RTI/TOOLBRAN-RECSERVCON-JOB1/recording_console.1.0/srcJava/com.rti.tools.ddr.deploy/target/targetPlatformRepository/
+repositories/file\:_ssd_atlassian_RTI_TOOLBRAN-RECSERVCON-JOB1_recording_console.1.0_srcJava_com.rti.tools.ddr.deploy_target_targetPlatformRepository/version=0.0.1

@@ -1,0 +1,901 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+ (c) Copyright, Real-Time Innovations, 2009-2016.
+ All rights reserved.
+ No duplications, whole or partial, manual or electronic, may be made
+ without express written permission.  Any such copies, or
+ revisions thereof, must display this notice unaltered.
+ This code contains trade secrets of Real-Time Innovations, Inc.
+-->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified">   
+    
+    <xs:include schemaLocation="definitions/rti_dds_qos_profiles_definitions.xsd"/>
+
+    <xs:complexType name="annotationType">
+        <xs:all>
+            <xs:element name="documentation" 
+                        type="xs:string" 
+                        minOccurs="0" 
+                        maxOccurs="1"/>
+        </xs:all>
+    </xs:complexType>
+    <!--  
+        ThreaPoolSettings
+    -->     
+    <xs:complexType name="threadPoolSettings">
+        <xs:annotation>
+            <xs:documentation>
+                The properties of a thread pool of execution. The settings
+                apply to all the threads within the pool.
+                (See Platform Notes for platform specific details)
+            </xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element name="size" 
+                        type="xs:positiveInteger"
+                        minOccurs="0" 
+                        default="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        The number of worker threads created by the pool.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="mask"
+                        type="threadKindMask"
+                        minOccurs="0"
+                        maxOccurs="1" 
+                        default="MASK_DEFAULT">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        Describes the type of thread.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="priority"
+                        type="positiveInteger_THREAD_PRIORITY_DEFAULT"
+                        minOccurs="0"
+                        maxOccurs="1" 
+                        default="THREAD_PRIORITY_DEFAULT">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        Thread priority.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="stack_size"
+                        type="positiveInteger_THREAD_STACK_SIZE_DEFAULT"
+                        minOccurs="0"
+                        maxOccurs="1" 
+                        default="THREAD_STACK_SIZE_DEFAULT">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        The thread stack size.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="cpu_list"
+                        type="nonNegativeIntegerSeq"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        The list of processors on which the thread(s) may run. 
+                        <br>
+                        A sequence of integers that represent the set of 
+                        processors on which the thread(s) controlled by this 
+                        QoS may run. An empty sequence (the default) means the 
+                        middleware wlll make no CPU affinity adjustments. 
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="cpu_rotation"
+                        type="threadSettingsCpuRotation"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Determines how processor affinity is applied to 
+                        multiple threads. 
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    
+    <!--  
+        FlowController
+    -->     
+    <xs:simpleType name="cdsAllocationValue">        
+        <xs:restriction base="xs:integer">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="100"/>
+        </xs:restriction>       
+    </xs:simpleType>
+
+     <xs:complexType name="outputCapacityAllocation">
+        <xs:all>            
+            <xs:element name="new" 
+                        type="xs:nonNegativeInteger"
+                        minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Percentage of the maximum output capacity dedicated to
+                        the participant announcements newly received by the 
+                        service.
+                        </br>
+                        <br>
+                        Default: LENGTH_UNLIMITED
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                 </xs:annotation>
+            </xs:element>
+            <xs:element name="update" 
+                        type="xs:nonNegativeInteger"
+                        minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Percentage of the maximum output capacity dedicated to
+                        the participant announcements that have been already 
+                        seen  by the service but that contain changes with 
+                        respect to the previous announcement (e.g a locator
+                        change).
+                        </br>
+                        <br>
+                        Default: LENGTH_UNLIMITED
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                 </xs:annotation>
+            </xs:element>
+            <xs:element name="refresh" 
+                        type="xs:nonNegativeInteger"
+                        minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Percentage of the maximum output capacity dedicated to
+                        the participant announcements that have been already 
+                        seen by the service and do not contain any changes with
+                        respect to the previous announcement.
+                        </br>
+                        <br>
+                        Default: LENGTH_UNLIMITED
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                 </xs:annotation>
+            </xs:element>                      
+        </xs:all>
+    </xs:complexType>   
+    
+    <xs:simpleType name="cdsBandwidthUnitKind">        
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:enumeration value="BYTES_PER_SECOND"/>
+            <xs:enumeration value="KILOBYTES_PER_SECOND"/>
+            <xs:enumeration value="MEGABYTES_PER_SECOND"/>
+        </xs:restriction>        
+    </xs:simpleType>
+    
+    <xs:complexType name="cdsBandwidth">
+        <xs:simpleContent>
+            <xs:extension base="nonNegativeInteger_UNLIMITED">
+                <xs:attribute name="unit" 
+                              type="cdsBandwidthUnitKind" 
+                              use="optional"
+                              default="KILOBYTES_PER_SECOND"/>
+            </xs:extension>
+        </xs:simpleContent>                
+    </xs:complexType>
+    
+    <xs:simpleType name="cdsDataSizeUnitKind">        
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:enumeration value="BYTES"/>
+            <xs:enumeration value="KILOBYTES"/>
+            <xs:enumeration value="MEGABYTES"/>
+        </xs:restriction>        
+    </xs:simpleType>
+    
+    <xs:complexType name="cdsDataSize">
+        <xs:simpleContent>
+            <xs:extension base="xs:nonNegativeInteger">
+                <xs:attribute name="unit" 
+                              type="cdsDataSizeUnitKind" 
+                              use="optional"
+                              default="KILOBYTES"/>
+            </xs:extension>
+        </xs:simpleContent>                
+    </xs:complexType>
+    
+    <xs:complexType name="cdsFlowController">
+        <xs:all>            
+            <xs:element name="output_capacity" 
+                        type="nonNegativeInteger_UNLIMITED"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Specifies a limit for the output bandwidth.
+                        </br>
+                        <br>
+                        Default: LENGTH_UNLIMITED
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                 </xs:annotation>                 
+            </xs:element>
+            <xs:element name="max_burst_jobs" 
+                        type="nonNegativeInteger_UNLIMITED"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Maximum amount of output data that can be forwarded at
+                        once.
+                        </br>
+                        <br>
+                        Default: output_capacity * 1 second
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                 </xs:annotation>                 
+            </xs:element>
+            <xs:element name="output_capacity_allocation" 
+                        type="outputCapacityAllocation"
+                        minOccurs="0"             
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Specifies an output traffic distribution depending on
+                        the participant announcement state.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                 </xs:annotation>
+            </xs:element> 
+            <xs:element name="flush_period" 
+                        type="duration"
+                        minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Configures the maximum period at which the forwarder
+                        will attempt to send pending announcements.
+                        </br>
+                        <br>
+                        Default: DDS_DURATION_INFINITE.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                 </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <!--
+        Forwarder
+    -->
+    <xs:complexType name="cdsForwarder">
+        <xs:all>
+            <xs:element name="thread_pool" 
+                        minOccurs="0"
+                        maxOccurs="1"
+                        type="threadPoolSettings">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[   
+                        <br> 
+                        Configures the forwarder thread pool. 
+                        </br>
+                        <br>
+                        The forwarder uses a thread pool to read, store and 
+                        sendparticipant announcements
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>  
+            </xs:element>
+            <xs:element name="flow_controller" 
+                        minOccurs="0"
+                        maxOccurs="1"
+                        type="cdsFlowController">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[    
+                        <br>
+                        Configures the announcement scheduling policy and the
+                        output traffic control.
+                        </br>
+                        <br>
+                        This allows you to decide how
+                        announcements are scheduled and to shape and limit 
+                        the output announcement traffic.
+                        </br>
+                        ]]>                        
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    
+    <!--
+        Database
+    -->
+    <xs:complexType name="cdsDatabase">
+        <xs:all>
+            <xs:element name="thread"
+                         type="threadSettings" 
+                         minOccurs="0" 
+                         maxOccurs="1"/>
+            <xs:element name="cleanup_period" 
+                        type="duration" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[                        
+                        The period at which the service database thread wakes up
+                        to clean up expired information.                        
+                        <br>  
+                        See DDS_DatabaseQosPolicy::cleanup_period.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="shutdown_cleanup_period" 
+                        type="duration" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[                          
+                        The clean-up period used during database shut-down.                       
+                        <br>
+                        See DDS_DatabaseQosPolicy::shutdown_cleanup_period.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="initial_records" 
+                        type="positiveInteger" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[                       
+                        The initial number of total records.
+                        <br>
+                        See DDS_DatabaseQosPolicy::initial_records.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="max_skiplist_level" 
+                        type="positiveInteger" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[                       
+                        The maximum level of the skiplist.                        
+                        <br>
+                        See DDS_DatabaseQosPolicy::max_skiplist_level
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation> 
+            </xs:element>
+            <xs:element name="initial_weak_references" 
+                        type="positiveInteger" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                 <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[                        
+                        The initial number of weak references.                                                                       
+                        <br>
+                        See DDS_DatabaseQosPolicy::initial_weak_references.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="max_weak_references" 
+                        type="positiveInteger_UNLIMITED" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[                        
+                        The maximum number of weak references.                                                                       
+                        <br>
+                        See DDS_DatabaseQosPolicy::max_weak_references.
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    
+    <!-- 
+        Resource limits
+    --> 
+    <xs:complexType name="cdsResourceLimits">        
+        <xs:all>
+            <xs:element name="remote_participant_allocation" 
+                        type="allocationSettings" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[                        
+                        Allocation settings applied to remote DomainParticipants.
+                        <br>
+                        It allows controlling resources associated with the 
+                        informaiton stored for each remote DomainParticipant.                        
+                        See DDS_DomainParticipantResourceLimitsQosPolicy::remote_participant_allocation
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="remote_participant_hash_buckets" 
+                        type="xs:positiveInteger" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Number of hash buckets for remote DomainParticipants.
+                        <br>
+                        See DDS_DomainParticipantResourceLimitsQosPolicy::remote_participant_hash_buckets
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>            
+            <xs:element name="participant_property_list_max_length" 
+                        type="xs:nonNegativeInteger" 
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Maximum number of properties associated with the DDS_DomainParticipant.
+                        <br>
+                        See DDS_DomainParticipantResourceLimitsQosPolicy::participant_property_list_max_length
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="participant_property_string_max_length" 
+                        type="xs:nonNegativeInteger" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Maximum string length of the properties associated with 
+                        the DDS_DomainParticipant.
+                        <br>
+                        The string length is defined as the cumulative length in 
+                        bytes, including the null terminating characters, of all 
+                        the pair (name,value) associated with the 
+                        DDS_DomainParticipant properties.
+                        See DDS_DomainParticipantResourceLimitsQosPolicy::participant_property_string_max_length
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="participant_user_data_max_length" 
+                        type="xs:nonNegativeInteger" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Maximum length of user data to send and receive in a 
+                        participant announcement.
+                        <br>
+                        See DDS_DomainParticipantResourceLimitsQosPolicy::participant_user_data_max_length
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="transport_info_list_max_length" 
+                        type="xs:nonNegativeInteger" 
+                        minOccurs="0" 
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Maximum number of installed transports to send and 
+                        receive information about in a participant announcement.
+                        <br>
+                        See DDS_DomainParticipantResourceLimitsQosPolicy::transport_info_list_max_length
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    
+    <!-- 
+        Property 
+    -->
+    <xs:complexType name="cdsPropertyValue">        
+        <xs:sequence>
+            <xs:element name="name"
+                        type="propertyName"
+                        minOccurs="0"
+                        maxOccurs="1"/>
+            <xs:element name="value"
+                        type="string"
+                        minOccurs="0"
+                        maxOccurs="1"/>
+        </xs:sequence>
+    </xs:complexType>
+
+    <xs:complexType name="cdsPropertyValueSeq">        
+        <xs:sequence>
+            <xs:element name="element" 
+                        type="cdsPropertyValue" 
+                        minOccurs="0" 
+                        maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Properties are name/value pairs objects. 
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+   
+    
+    <!-- 
+        Transports
+    -->      
+    <xs:simpleType name="cdsReceivePortKind">        
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:enumeration value="PORT"/>
+            <xs:enumeration value="DOMAIN_ID_DERIVED"/>
+        </xs:restriction>
+        
+    </xs:simpleType>
+    
+    <xs:complexType name="cdsReceivePort">
+        <xs:simpleContent>
+            <xs:extension base="xs:nonNegativeInteger">
+                <xs:attribute name="kind" 
+                              type="cdsReceivePortKind" 
+                              use="optional"
+                              default="PORT">
+                    <xs:annotation>
+                        <xs:documentation>
+                        <![CDATA[
+                        Specifies the port representation:
+                        <ul>
+                            <li>
+                              PORT
+                              <br>
+                              An integer that represents a port number within 
+                              the valid range allowed by the transport.
+                              </br>
+                            </li>
+                           <li>
+                              DOMAIN_ID_DERIVED
+                              <br>
+                              A domain ID that represents the discovery receive port 
+                              computed from the well-know RTPS port mapping, assuming
+                              the following parameters:
+                              <ul>
+                                <li>participant ID = 0</li>
+                                <li>well-known ports = DDS_INTEROPERABLE_RTPS_WELL_KNOWN_PORTS</li>
+                              </ul>
+                             See RTI Connext DDS User's Manual for documentation 
+                             about RTPS port mapping. Refer to 
+                             DDS_WireProtocolQosPolicy.
+                              </br>
+                            </li>
+                        </ul>
+                        ]]>
+                        </xs:documentation>
+                    </xs:annotation>
+                </xs:attribute>
+            </xs:extension>
+        </xs:simpleContent>                
+    </xs:complexType>
+    
+    <xs:complexType name="cdsTransportUnicastSettings">        
+        <xs:sequence>
+            <xs:element name="alias"
+                        type="xs:string"
+                        minOccurs="0"
+                        maxOccurs="1" default="builtin.Udpv4">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        An alias that identifies an installed transport plug-in
+                        used to receive and send participant announcements.
+                        
+                        <br>
+                        See RTI Connext DDS User's Manual for documentation on
+                        the available built-in transports. 
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="receive_port"
+                        type="cdsReceivePort"
+                        minOccurs="01"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Specifies the port that the service listens to for the
+                        reception of participant announcements.
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>       
+            <xs:element name="property"
+                        type="cdsPropertyValueSeq"
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Configuration property specific to the transport.
+                        <br>
+                        See RTI Connext DDS User's Manual for documentation on
+                        the available built-in transports and their configuration
+                        properties. 
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <xs:complexType name="transportUnicast">        
+        <xs:sequence>
+            <xs:element name="element" 
+                        type="cdsTransportUnicastSettings" 
+                        minOccurs="0" 
+                        maxOccurs="unbounded">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Type representing an unicast transport configuration,
+                        specified by a transport alias and a receive unicast 
+                        port.
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    
+    <!-- 
+        Domain ID access control
+    -->       
+    <xs:simpleType name="allowDomainIdDescriptorList">
+        <xs:restriction base="xs:string">
+            <xs:whiteSpace value="collapse"/>
+            <xs:pattern value="((\s)*|(\-)*|(\[)*|(\])*|(,)*|([0-9])*)*|(\*)?|DOMAIN_LIST_ALL"/>
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:simpleType name="denyDomainIdDescriptorList">
+        <xs:restriction base="allowDomainIdDescriptorList">
+            <xs:whiteSpace value="collapse"/>
+            <xs:pattern value="[^DOMAIN_LIST_ALL]"/>           
+        </xs:restriction>
+    </xs:simpleType>
+    
+    <xs:complexType name="domainLists">
+        <xs:all minOccurs="1">
+            <xs:element name="allow_domain_id" 
+                        type="allowDomainIdDescriptorList" 
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Domain IDs the service interacts. Remaining domains
+                        are ignored. Default: DOMAIN_LIST_ALL
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="deny_domain_id" 
+                        type="denyDomainIdDescriptorList" 
+                        minOccurs="0"
+                        maxOccurs="1">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Domain IDs the service ignores. Remaining domains
+                        are accepted. 
+                        <br>
+                        This filter <b>is applied after</b> the allow_domain_id 
+                        and filters out the domains that should be ignored.
+                        </br>
+                        Default: (empty string)
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>            
+        </xs:all>
+    </xs:complexType>
+         
+         
+    <!-- 
+        Service
+    -->      
+    <xs:complexType name="cloudDiscoveryService">
+        <xs:all>
+            <xs:element name="annotation" 
+                        type="annotationType" 
+                        minOccurs="0" 
+                        maxOccurs="1"/>
+            <xs:element name="domain_list"     
+                        minOccurs="0"
+                        maxOccurs="1"
+                        type="domainLists">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Specifies a subset of domains.
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="transport"     
+                        minOccurs="0"
+                        maxOccurs="1"
+                        type="transportUnicast">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Specifies the unicast transport addresses to be used by 
+                        the service for receiving participant announcements. 
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+            <xs:element name="forwarder" 
+                        minOccurs="0"
+                        maxOccurs="1"
+                        type="cdsForwarder">
+                <xs:annotation>
+                    <xs:documentation>
+                         <![CDATA[
+                        Configures the forwarding processing.
+                        <br>
+                        The forwarder represents an active element of execution 
+                        that performs the reading, processing and sending of 
+                        the participant announcements. This element allows you 
+                        to configure all the settings related to threading and 
+                        traffic control. 
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>   
+            </xs:element>                     
+            <xs:element name="database"     
+                        minOccurs="0"
+                        maxOccurs="1"
+                        type="cdsDatabase">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Configures the internal "database" used by the service 
+                        to hold information about locally created entities and 
+                        remote entities that are discovered through the 
+                        discovery process. 
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>     
+            <xs:element name="resource_limits"     
+                        minOccurs="0"
+                        maxOccurs="1"
+                        type="cdsResourceLimits">
+                <xs:annotation>
+                    <xs:documentation>
+                        <![CDATA[
+                        Configures resources used by the service. 
+                        <br>
+                        Many of these resources are used by the internal database
+                        to store information about remote participants and local
+                        state.
+                        </br>
+                        <br>
+                        Some of the parameters configure the 
+                        data structures used to search through the database 
+                        efficiently. 
+                        Finally, there are parameters that limit the sizes of 
+                        variable-length data fields. 
+                        </br>
+                        ]]>
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>          
+        </xs:all>
+        
+        <xs:attribute name="name" type="xs:string" use="required"/>
+    </xs:complexType>
+
+   <!-- 
+        root 
+    -->
+    <xs:complexType name="ddsCds">            
+        <xs:sequence>
+            <xs:element name="cloud_discovery_service" 
+                                maxOccurs="unbounded"
+                                type="cloudDiscoveryService" minOccurs="0">
+                <xs:annotation>
+                    <xs:documentation>
+                        The top-level configuration element of the DDS 
+                        Cloud Discovery Service. Defines the unit of
+                        service configuration loading.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:element>
+        </xs:sequence>             
+    </xs:complexType>
+    
+    <xs:element name="dds"  type="ddsCds"/>      
+    
+</xs:schema>
+

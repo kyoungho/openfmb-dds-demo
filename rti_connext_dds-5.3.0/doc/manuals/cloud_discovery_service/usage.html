@@ -1,0 +1,349 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. Usage &mdash; RTI Cloud Discovery Service 5.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="RTI Cloud Discovery Service 5.3.0 documentation" href="index.html"/>
+        <link rel="next" title="6. Tutorials" href="tutorials.html"/>
+        <link rel="prev" title="4. Configuration" href="configuration.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI Cloud Discovery Service
+          
+
+          
+            
+            <img src="_static/rti-logo-FINALv2-White-OrangeDot.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_concepts.html">3. Core Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">4. Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">5. Usage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#starting-cloud-discovery-service">5.1. Starting Cloud Discovery Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#stopping-cloud-discovery-service">5.2. Stopping Cloud Discovery Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cloud-discovery-service-command-line-parameters">5.3. Cloud Discovery Service Command-Line Parameters</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">6. Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">8. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">RTI Cloud Discovery Service</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>5. Usage</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usage">
+<span id="section-usage"></span><h1>5. Usage<a class="headerlink" href="#usage" title="Permalink to this headline">¶</a></h1>
+<p>This chapter explains how to run <em>Cloud Discovery Service</em> from a command-line tool.
+In particular, it describes:</p>
+<ul class="simple">
+<li>How to Start <em>Cloud Discovery Service</em> (<a class="reference internal" href="#section-starting-cloud-discovery-service"><span class="std std-numref">Section 5.1</span></a>).</li>
+<li>How to Stop <em>Cloud Discovery Service</em> (<a class="reference internal" href="#section-stopping-cloud-discovery-service"><span class="std std-numref">Section 5.2</span></a>).</li>
+<li><em>Cloud Discovery Service</em> Command-line Parameters (<a class="reference internal" href="#section-cloud-discovery-service-command-line-parameters"><span class="std std-numref">Section 5.3</span></a>).</li>
+</ul>
+<div class="section" id="starting-cloud-discovery-service">
+<span id="section-starting-cloud-discovery-service"></span><h2>5.1. Starting Cloud Discovery Service<a class="headerlink" href="#starting-cloud-discovery-service" title="Permalink to this headline">¶</a></h2>
+<p><em>Cloud Discovery Service</em> runs as a separate application. The script to run the
+executable is in <code class="docutils literal"><span class="pre">&lt;NDDSHOME&gt;/bin</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rticlouddiscoveryservice <span class="o">[</span>options<span class="o">]</span>
+</pre></div>
+</div>
+<p>To start <em>Cloud Discovery Service</em> with a default configuration, enter:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice
+</pre></div>
+</div>
+<p>This command will run <em>Cloud Discovery Service</em> indefinitely until you
+stop it. See <a class="reference internal" href="#section-stopping-cloud-discovery-service"><span class="std std-numref">Section 5.2</span></a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>Cloud Discovery Service</em> is pre-loaded with a built-in configuration that
+has default settings. See <a class="reference internal" href="configuration.html#section-configuration-builtin"><span class="std std-numref">Section 4.6</span></a>.</p>
+</div>
+<p><a class="reference internal" href="#tablecommandlineparameters"><span class="std std-numref">Table 5.1</span></a> describes the command-line parameters.</p>
+</div>
+<div class="section" id="stopping-cloud-discovery-service">
+<span id="section-stopping-cloud-discovery-service"></span><h2>5.2. Stopping Cloud Discovery Service<a class="headerlink" href="#stopping-cloud-discovery-service" title="Permalink to this headline">¶</a></h2>
+<p>To stop <em>Cloud Discovery Service</em>, press Ctrl-c. <em>Cloud Discovery Service</em>
+will perform a clean shutdown.</p>
+</div>
+<div class="section" id="cloud-discovery-service-command-line-parameters">
+<span id="section-cloud-discovery-service-command-line-parameters"></span><h2>5.3. Cloud Discovery Service Command-Line Parameters<a class="headerlink" href="#cloud-discovery-service-command-line-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The following table describes all the command-line parameters available in
+<em>Cloud Discovery Service</em>. To list the available commands, run
+<code class="docutils literal"><span class="pre">rticlouddiscoveryservice</span> <span class="pre">-h</span></code>.</p>
+<table border="1" class="colwidths-given docutils" id="tablecommandlineparameters">
+<caption><span class="caption-number">Table 5.1 </span><span class="caption-text">Cloud Discovery Service Command-line Parameters</span><a class="headerlink" href="#tablecommandlineparameters" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="33%" />
+<col width="67%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-allowDomain</span> <span class="pre">&lt;string&gt;</span></code></td>
+<td>Set of forwarded domain IDs. Remaining domains are ignored. <br />
+<strong>Default:</strong> <code class="docutils literal"><span class="pre">DOMAIN_LIST_ALL</span></code> (forward all domains). <br />
+<strong>Overrides:</strong> <code class="docutils literal"><span class="pre">domain_list/allow_domain_id</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-denyDomain</span> <span class="pre">&lt;string&gt;</span></code></td>
+<td>Subset of ignored domain IDs from the allowed domains. <br />
+<strong>Default:</strong> empty string (none is ignored) <br />
+<strong>Overrides:</strong> <code class="docutils literal"><span class="pre">domain_list/deny_domain_id</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-cfgFile</span> <span class="pre">&lt;string&gt;</span></code></td>
+<td>Path to the configuration file. <br />
+<strong>Default:</strong> (unspecified)</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-cfgName</span> <span class="pre">&lt;string&gt;</span></code></td>
+<td>Name of the <em>Cloud Discovery Service</em> configuration to be loaded. <br />
+It must match a <code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code> tag in the configuration
+file. <br />
+<strong>Default:</strong> rti.cds.builtin.config.default.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-heapSnapshotDir</span> <span class="pre">&lt;dir&gt;</span></code></td>
+<td>Output directory where the heap monitoring snapshots are dumped. <br />
+The filename format is RTI_heap_&lt;appName&gt;_&lt;processId&gt;_&lt;index&gt;.
+Used only if heap monitoring is enabled. <br />
+<strong>Default</strong>: current working directory</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-heapSnapshotPeriod</span> <span class="pre">&lt;sec&gt;</span></code></td>
+<td>Period at which heap monitoring snapshots are dumped.
+Enables heap monitoring if &gt; 0. <br />
+<strong>Default</strong>: 0 (disabled)</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-help</span></code></td>
+<td>Prints this help and exits.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-ignoreXsdValidation</span></code></td>
+<td>Loads the configuration even if the XSD validation fails.</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-listConfig</span></code></td>
+<td>Prints the available configurations and exits.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-maxObjectsPerThread</span> <span class="pre">&lt;int&gt;</span></code></td>
+<td>Maximum number of thread-specific objects that can be created. <br />
+<strong>Default:</strong> 2048</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-stopAfter</span> <span class="pre">&lt;int&gt;</span></code></td>
+<td>Number of seconds the <em>Cloud Discovery Service</em> runs before it
+stops. <br />
+<strong>Default:</strong> (infinite).</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-transport</span> <span class="pre">&lt;string&gt;</span></code></td>
+<td>A comma separated list of transport resources, where each resource is
+specified in the form: <code class="docutils literal"><span class="pre">[alias:]receive_port</span></code> <br />
+<strong>Default:</strong>  udpv4:7400 <br />
+<strong>Overrides:</strong> <code class="docutils literal"><span class="pre">transport</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">-verbosity</span> <span class="pre">&lt;int&gt;</span></code></td>
+<td>Controls what type of messages are logged: <br /> <br />
+0. Silent <br />
+1. Exceptions (<em>Connext DDS</em> and <em>Cloud Discovery Service</em>) <br />
+2. Warnings (<em>Cloud Discovery Service</em>) <br />
+3. Warnings (<em>Connext DDS</em>) <br />
+4. Local (<em>Cloud Discovery Service</em>) <br />
+5. Remote (<em>Cloud Discovery Service</em>) <br />
+6. Activity (<em>Cloud Discovery Service</em>) and Local (<em>Connext DDS</em>) <br /> <br />
+Each verbosity level, <code class="docutils literal"><span class="pre">n</span></code>, includes all the verbosity level smaller
+than <code class="docutils literal"><span class="pre">n</span></code>.</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">-version</span></code></td>
+<td>Prints the Cloud Discovery Service version and exits.</td>
+</tr>
+</tbody>
+</table>
+<p>All the command-line parameters are optional; if specified, they override
+the values of their corresponding settings in the loaded XML configuration.
+See <a class="reference internal" href="configuration.html#section-configuration"><span class="std std-numref">Section 4</span></a> for the set of XML elements that can be
+overriden with command-line parameters.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorials.html" class="btn btn-neutral float-right" title="6. Tutorials" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="configuration.html" class="btn btn-neutral" title="4. Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Real-Time Innovations, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

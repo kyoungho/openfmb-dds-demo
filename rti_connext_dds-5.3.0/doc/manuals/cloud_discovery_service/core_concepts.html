@@ -1,0 +1,650 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. Core Concepts &mdash; RTI Cloud Discovery Service 5.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="RTI Cloud Discovery Service 5.3.0 documentation" href="index.html"/>
+        <link rel="next" title="4. Configuration" href="configuration.html"/>
+        <link rel="prev" title="2. Installation" href="installation.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI Cloud Discovery Service
+          
+
+          
+            
+            <img src="_static/rti-logo-FINALv2-White-OrangeDot.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">3. Core Concepts</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#domain-lists">3.1. Domain Lists</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#domain-tags">3.1.1. Domain Tags</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#specifying-the-domain-tag-in-xml">3.1.1.1. Specifying the Domain Tag in XML</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#transport">3.2. Transport</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rtps-peer-descriptor">3.2.1. RTPS Peer Descriptor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-rtps-peer-descriptors">3.2.1.1. Example: RTPS Peer Descriptors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-transport-setup-and-resulting-rtps-descriptor">3.2.1.2. Example: Transport setup and resulting RTPS descriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#about-ports">3.2.2. About Ports</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#forwarder">3.3. Forwarder</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#flow-controller">3.3.1. Flow controller</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#operation-mode">3.3.1.1. Operation mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#database">3.4. Database</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">4. Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">5. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">6. Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">8. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">RTI Cloud Discovery Service</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>3. Core Concepts</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="core-concepts">
+<span id="section-core-concepts"></span><h1>3. Core Concepts<a class="headerlink" href="#core-concepts" title="Permalink to this headline">¶</a></h1>
+<p>This section aims to provide a deeper understanding of what <em>Cloud Discovery Service</em> is made of,
+to give you the required insight to configure and use it effectively.</p>
+<p>You will learn about:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#section-domain-lists"><span class="std std-ref">Domain lists</span></a>—Sets the context for <em>Cloud Discovery Service</em> in DDS
+domains.</li>
+<li><a class="reference internal" href="#section-transport"><span class="std std-ref">Transport</span></a>: Shows how the transports are modeled in
+<em>Cloud Discovery Service</em>, which is the basis for communication with <em>DomainParticipants</em>.</li>
+<li><a class="reference internal" href="#section-database"><span class="std std-ref">Database</span></a>: The collection of discovered <em>DomainParticipants</em>
+information that <em>Cloud Discovery Service</em> maintains to represent the current state of the system.</li>
+<li><a class="reference internal" href="#section-forwarder"><span class="std std-ref">Forwarder</span></a>: The active logic of
+<em>Cloud Discovery Service</em> that is in charge of processing the participant announcements, building
+the system discovery state, and providing the information to all <em>DomainParticipants</em>.</li>
+</ul>
+<div class="section" id="domain-lists">
+<span id="section-domain-lists"></span><h2>3.1. Domain Lists<a class="headerlink" href="#domain-lists" title="Permalink to this headline">¶</a></h2>
+<p>A single <em>Cloud Discovery Service</em> can forward participant announcements in <em>multiple DDS domains</em>.
+Yet <em>Cloud Discovery Service</em> preserves the isolation of <em>DDS domain IDs</em> such that a <em>DomainParticipant</em> only
+discovers other <em>DomainParticipants</em> on the same <em>DDS domain ID</em>.</p>
+<div class="figure align-center" id="figurecdsmultidomain" style="width: 100%">
+<img alt="Cloud Discovery Service Multi Domain Support" src="_images/CdsMultiDomain.svg" /><p class="caption"><span class="caption-number">Figure 3.1 </span><span class="caption-text">Cloud Discovery Service Multi Domain</span></p>
+</div>
+<p>By providing a <em>domain list</em>, you can control on which domains <em>Cloud Discovery Service</em> operates.
+A domain list is a representation of domains by their IDs. You can learn more
+about configuring domain lists in
+<a class="reference internal" href="configuration.html#section-config-domain-list"><span class="std std-numref">Section 4.5.2</span></a>.</p>
+<p>Support for multiple domain IDs can simplify system deployments, allowing a few
+<em>Cloud Discovery Service</em> instances to provide discovery services for all possible expected domain
+IDs, even if all these domain IDs are not known in advance.</p>
+<div class="section" id="domain-tags">
+<span id="section-domain-list-tags"></span><h3>3.1.1. Domain Tags<a class="headerlink" href="#domain-tags" title="Permalink to this headline">¶</a></h3>
+<p>In large-scale systems or multi-tenant networks, such as those found
+in <em>Cloud</em> deployments, the isolation provided by the DDS domain ID may
+not be sufficient:</p>
+<ul class="simple">
+<li>The number of domain IDs is limited to about 200. If more than 200
+independent DDS systems needed to be deployed on a common network the domain
+ID would not be sufficient to provide isolation.</li>
+<li>Managing the assignment of numeric domain IDs to independent systems or
+projects can be cumbersome. Numeric IDs cannot easily leverage existing
+organizational or project boundaries such as project name, department,
+organization, etc.</li>
+</ul>
+<p>For these reasons, DDS domain concept has been extended to include
+<em>Domain Tags</em>.</p>
+<p>A domain tag is a logical sub-division within a domain. It is defined as a
+string. <em>DomainParticipants</em> associated to different domain tags will not discover each other
+even if they are in the same <em>domain ID</em>. You can think of a <em>Domain Tag</em> as
+the DDS equivalent of a network VLAN.</p>
+<p><a class="reference internal" href="#figuredomaintag"><span class="std std-numref">Figure 3.2</span></a> shows an overview of the domain tag concept.</p>
+<div class="figure align-center" id="figuredomaintag" style="width: 100%">
+<img alt="Domain Tags" src="_images/DomainTags.svg" /><p class="caption"><span class="caption-number">Figure 3.2 </span><span class="caption-text">Domain Tags</span></p>
+</div>
+<p>A <em>DomainParticipant</em> can be associated with only one domain tag. In a given domain, all the
+<em>DomainParticipants</em> may exchange participant announcements in order to initiate the discovery
+process between them. However, only <em>DomainParticipants</em> that have the <strong>the same domain tag</strong>
+will discover each other.</p>
+<p>Domain tags allow you to divide your domain in as many logically isolated
+spaces as you need. A domain tag is represented by a string <em>tag name</em>. You can
+define as many tags as spaces you need. The tag name may include any ASCII
+character.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The absence of a domain tag is treated like a special value of the tag. <em>DomainParticipants</em>
+that do not specify a domain tag will communicate only with each other.</p>
+</div>
+<p>Characteristics of domain tags:</p>
+<ul class="simple">
+<li><strong>Single Tag per Domain Participant</strong>: A <em>DomainParticipant</em> can be associated with a single
+domain tag.</li>
+<li><strong>Immutability</strong>: Domain tags are immutable. <em>DomainParticipants</em> specify the domain tag at
+creation time and it can not be modified.</li>
+</ul>
+<p><em>Cloud Discovery Service</em> understands domain tags and forwards discovery information only to <em>DomainParticipants</em>
+with matching domain ID <strong>and</strong> domain tag. <a class="reference internal" href="#figurecdsdomaintag"><span class="std std-numref">Figure 3.3</span></a> shows
+the domain tags&#8217; effect when <em>Cloud Discovery Service</em> drives the discovery process.</p>
+<div class="figure align-center" id="figurecdsdomaintag" style="width: 100%">
+<img alt="|CDS| with domain Tags" src="_images/CdsDomainTags.svg" /><p class="caption"><span class="caption-number">Figure 3.3 </span><span class="caption-text"><em>Cloud Discovery Service</em> with domain Tags</span></p>
+</div>
+<p><em>Cloud Discovery Service</em> detects the domain tag of each <em>DomainParticipant</em> and remembers that association. That
+way it can forward the participant announcements only to those <em>DomainParticipants</em> that
+belong to the same domain ID and tag.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The functionality of Domain Tags is currently only available if discovery
+occurs through <em>Cloud Discovery Service</em>. If discovery occurs directly between <em>DomainParticipant</em>, domain tags
+will be ignored.</p>
+</div>
+<p>You can specify the domain tag for a <em>DomainParticipant</em> at creation time via
+<em>DomainParticipantQos</em>. In particular, you need to propagate the well-known
+property <code class="docutils literal"><span class="pre">dds.domain_participant.domain_tag,</span></code> whose value contains the name
+of the tag associated to the <em>DomainParticipant</em>. You can specify this property through the
+<em>PropertyQosPolicy</em>.</p>
+<div class="section" id="specifying-the-domain-tag-in-xml">
+<h4>3.1.1.1. Specifying the Domain Tag in XML<a class="headerlink" href="#specifying-the-domain-tag-in-xml" title="Permalink to this headline">¶</a></h4>
+<p>The following XML QoS snippet shows how to specify the domain tag within
+<em>DomainParticipantQos</em>.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;participant_qos&gt;</span>
+    <span class="nt">&lt;property&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.domain_participant.domain_tag<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>TagX<span class="nt">&lt;/value&gt;</span>
+            <span class="nt">&lt;propagate&gt;</span>true<span class="nt">&lt;/propagate&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/property&gt;</span>
+<span class="nt">&lt;/participant_qos&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="transport">
+<span id="section-transport"></span><h2>3.2. Transport<a class="headerlink" href="#transport" title="Permalink to this headline">¶</a></h2>
+<p><em>Cloud Discovery Service</em> allows you to select which transports to use to send and receive discovery
+traffic. The selection of transports defines the possible locations where the
+service can be reached. <em>DomainParticipants</em> require this information to communicate with the
+service.</p>
+<p>In a <em>Connext DDS</em> application, <em>DomainParticipants</em> automatically configure the underlying
+transport ports based on the domain ID and the network capabilities of the host
+machine where the application runs. In <em>Cloud Discovery Service</em>, this configuration is manual and
+explicit.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><em>Cloud Discovery Service</em> only works with <em>unicast</em> transports. In this manual, any reference
+to the transport will always imply unicast.</p>
+</div>
+<p>In particular, <em>Cloud Discovery Service</em> allows you to choose:</p>
+<ul class="simple">
+<li><strong>Transport class instance</strong>: A <em>transport class</em> is a concrete realization
+of a networking transport (e.g UDP, TCP, etc). You can instantiate this class
+and uniquely identify it with a <em>transport alias</em>. In addition, for each
+instantiation you can configure properties specific to the implementation
+(e.g. network interfaces, receive buffer sizes, etc).</li>
+<li><strong>Transport Address</strong>: A <em>transport address</em> represents an interface for a
+specific transport class. For example an IP address for the UDP or TCP
+transport.</li>
+<li><strong>Receive Port</strong>: Identifies where the service listens to incoming data. For
+more information about ports, see <a class="reference internal" href="#section-transport-about-ports"><span class="std std-numref">Section 3.2.2</span></a>.</li>
+</ul>
+<p>Each transport instance-address tuple constitutes a Transport <em>Locator</em>,
+which is a unique data-reception endpoint. <em>Cloud Discovery Service</em> creates send resources to put
+discovery traffic on the wire. <em>Connext DDS</em> uses ephemeral ports for outbound
+data, hence a send resource is specified by a transport instance only. <em>Cloud Discovery Service</em>
+creates a send resource for each transport instance specified.</p>
+<p><em>Cloud Discovery Service</em> relies on the same pluggable transport framework that is available for
+<em>Connext DDS</em> applications to create and access transport resources. This
+implies you can use not only <em>RTI Connext</em> built-in transport, but also your own
+transport implementations. For more information, see
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//transports.htm">transport plugins</a> in <em>RTI Connext DDS Users Manual</em>.</p>
+<p><em>DomainParticipants</em> can communicate with <em>Cloud Discovery Service</em> as long as they are configured with the proper
+transport settings. Then they can reach a specific service instance in two ways:</p>
+<ol class="arabic simple">
+<li>By addressing the service instance through an
+<a class="reference internal" href="#section-domain-list-rtps-peer-descriptor"><span class="std std-ref">RTPS peer descriptor</span></a> which
+allows you to identify a DDS service in a generic way by its <em>locator</em>. <em>DomainParticipants</em>
+can include these in their lists of initial peers.</li>
+<li>By addressing the service instance through a peer participant descriptor
+such that the resulting destination port computed from the domain ID of the
+<em>DomainParticipant</em> and well-known ports configuration matches the listening port of the
+service.</li>
+</ol>
+<p><em>Cloud Discovery Service</em> determines how to reach back <em>DomainParticipants</em> based on the locator
+information they propagate as part of their participant announcements. <em>Cloud Discovery Service</em>
+sends discovery traffic to a <em>DomainParticipant</em> by sending data to each of its locators.</p>
+<div class="section" id="rtps-peer-descriptor">
+<span id="section-domain-list-rtps-peer-descriptor"></span><h3>3.2.1. RTPS Peer Descriptor<a class="headerlink" href="#rtps-peer-descriptor" title="Permalink to this headline">¶</a></h3>
+<p>A peer descriptor is a string representation of a set of locators for DDS <em>DomainParticipants</em>.
+It provides a compact way to indicate a list of Locators where a <em>DomainParticipant</em> can find
+other <em>DomainParticipants</em>. This is known as a <strong>participant peer descriptor</strong>, or
+simply a <strong>peer descriptor</strong>.</p>
+<p><em>RTI Connext DDS</em> applications use the <em>participant peer descriptor</em> to
+bootstrap the participant discovery process with other <em>DomainParticipants</em>. Refer to
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//ConfigPeersListUsed_inDiscov.htm#discovery_507287096_336417">discovery peer configuration</a> in
+<em>RTI Connext DDS User&#8217;s Manual</em>.</p>
+<p>The <strong>RTPS peer descriptor</strong> is another kind of peer descriptor that allows
+addressing a service with which you communicate through the <em>RTPS</em> protocol,
+and that does not necessarily imply the existence of a <em>DomainParticipant</em>. <em>Cloud Discovery Service</em> is an
+example of such a service.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <em>RTPS peer descriptor</em> format is supported only by applications using
+<em>RTI DDS Connext</em> versions 5.3.0 and higher.</p>
+</div>
+<p>The RTPS peer descriptor format is shown below:</p>
+<div class="figure align-center" id="figurertpspeerdescriptorformat" style="width: 100%">
+<img alt="RTPS Peer Descriptor Format" src="_images/RtpsPeerDescriptorFormat.svg" /><p class="caption"><span class="caption-number">Figure 3.4 </span><span class="caption-text">RTPS Peer Descriptor Format</span></p>
+</div>
+<p><a class="reference internal" href="#tablertpspeerdescriptorelements"><span class="std std-numref">Table 3.1</span></a> describes all the elements in the
+RTPS peer descriptor.</p>
+<table border="1" class="colwidths-given docutils" id="tablertpspeerdescriptorelements">
+<caption><span class="caption-number">Table 3.1 </span><span class="caption-text">RTPS peer descriptor elements</span><a class="headerlink" href="#tablertpspeerdescriptorelements" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="17%" />
+<col width="42%" />
+<col width="25%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Element</strong></td>
+<td><strong>Description</strong></td>
+<td><strong>Required</strong></td>
+<td><strong>Default</strong></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">rtps</span></code></td>
+<td>Keyword to indicate the RTPS descriptor kind.</td>
+<td>Yes</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&#64;</span></code></td>
+<td>Separator.</td>
+<td>Only when <code class="docutils literal"><span class="pre">&lt;locator&gt;</span></code> is specified.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;locator&gt;</span></code></td>
+<td>Specifies a transport and an address.  See
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//Peer_Descriptor_Format.htm#discovery_507287096_336444">locator format</a>.</td>
+<td>No</td>
+<td>udpv4://localhost</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">:</span></code></td>
+<td>Separator.</td>
+<td>Only when <code class="docutils literal"><span class="pre">&lt;port&gt;</span></code> is specified.</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;port&gt;</span></code></td>
+<td>RTPS Peer receive port. See <a class="reference internal" href="#section-transport-about-ports"><span class="std std-numref">Section 3.2.2</span></a>.</td>
+<td>No</td>
+<td>7400</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="example-rtps-peer-descriptors">
+<h4>3.2.1.1. Example: RTPS Peer Descriptors<a class="headerlink" href="#example-rtps-peer-descriptors" title="Permalink to this headline">¶</a></h4>
+<table border="1" class="colwidths-given docutils" id="tablertpspeerdescudp">
+<caption><span class="caption-number">Table 3.2 </span><span class="caption-text">RTPS peer descriptor for <strong>UDP/IP</strong> version 4 transport.</span><a class="headerlink" href="#tablertpspeerdescudp" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="43%" />
+<col width="9%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>rtps</td>
+<td>&#64;</td>
+<td>udpv4://192.169.1.1</td>
+<td>:</td>
+<td>7400</td>
+</tr>
+</tbody>
+</table>
+<table border="1" class="colwidths-given docutils" id="tablertpspeerdescstarfabric">
+<caption><span class="caption-number">Table 3.3 </span><span class="caption-text">RTPS peer descriptor for a generic <strong>Starfabric</strong> transport.</span><a class="headerlink" href="#tablertpspeerdescstarfabric" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="22%" />
+<col width="9%" />
+<col width="43%" />
+<col width="9%" />
+<col width="17%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>rtps</td>
+<td>&#64;</td>
+<td>starfabric://FA::0#0/0/R</td>
+<td>&#160;</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example-transport-setup-and-resulting-rtps-descriptor">
+<h4>3.2.1.2. Example: Transport setup and resulting RTPS descriptor<a class="headerlink" href="#example-transport-setup-and-resulting-rtps-descriptor" title="Permalink to this headline">¶</a></h4>
+<p>Assume <em>Cloud Discovery Service</em> is configured with the following transport
+settings and running in host <code class="docutils literal"><span class="pre">CdsHost</span></code>:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;transport&gt;</span>
+    <span class="nt">&lt;element&gt;</span>
+        <span class="nt">&lt;alias&gt;</span>udpv4<span class="nt">&lt;/alias&gt;</span>
+        <span class="nt">&lt;receive_port&gt;</span>57410<span class="nt">&lt;/receive_port&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/transport&gt;</span>
+</pre></div>
+</div>
+<p><em>DomainParticipants</em> can send discovery traffic to this service by adding the following peer
+to their initial peer lists:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>rtps@udpv4://CdsHost:57410
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="about-ports">
+<span id="section-transport-about-ports"></span><h3>3.2.2. About Ports<a class="headerlink" href="#about-ports" title="Permalink to this headline">¶</a></h3>
+<p>Discovery traffic through RTPS relies on well-known ports to establish
+communication between peers. These ports are a logical concept that allow
+multiplexing communications at the middleware layer.</p>
+<p>It is up to the underlying transport implementation to decide how to map these
+logical port numbers into the physical transport address scheme.
+For instance, the RTI built-in UDP transport directly maps the logical port
+number into the physical UDP port.</p>
+<p>The port mapping is especially important in <em>Cloud</em> environments where UDP and
+TCP dominate the transport layer. The presence of these protocols often requires
+knowing details about the communication ports to properly set up application
+services.</p>
+<p>In a <em>DomainParticipant</em>, unless explicitly configured, ports are determined automatically
+based on the domain ID and participant ID. Also, the port mapping is fully
+controlled by the underlying transport. In <em>Cloud Discovery Service</em> the ports must be configured
+explicitly. Moreover, for the direct known RTI transport implementations that
+rely on UDP and TCP, the <em>Cloud Discovery Service</em> service maps the (logical) receive port directly
+to the transport physical port.</p>
+<p>See <a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//Ports_Used_for_Discovery.htm#discovery_507287096_264722">Ports Used for Discovery</a> to learn more about
+RTPS ports.</p>
+</div>
+</div>
+<div class="section" id="forwarder">
+<span id="section-forwarder"></span><h2>3.3. Forwarder<a class="headerlink" href="#forwarder" title="Permalink to this headline">¶</a></h2>
+<p>The forwarder is the <em>Cloud Discovery Service</em> component where all the discovery logic resides. Its
+responsibility is to build the discovery state and forward participant
+announcements to the peer <em>DomainParticipants</em> so that they can discover each other.</p>
+<p><a class="reference internal" href="#figurecdsforwarder"><span class="std std-numref">Figure 3.5</span></a> shows a representation of the forwarder
+element of <em>Cloud Discovery Service</em>.</p>
+<div class="figure align-center" id="figurecdsforwarder" style="width: 100%">
+<img alt="Participant Announcement forwarder" src="_images/CdsForwarder.svg" /><p class="caption"><span class="caption-number">Figure 3.5 </span><span class="caption-text">Participant announcement forwarder</span></p>
+</div>
+<p>There are three main blocks that compose the forwarder:</p>
+<ul>
+<li><p class="first"><strong>Receiver</strong>: The element in charge of retrieving incoming participant
+announcements. This element interfaces with the <em>receive resources</em>,
+which provide the participant announcements received from all the peer <em>DomainParticipants</em>.</p>
+</li>
+<li><p class="first"><strong>Announcement queues</strong>: The received participant announcements are placed in
+queues so they can be forwarded to the proper destinations. Participant
+announcements can be categorized in three different classes:</p>
+<blockquote>
+<div><ul class="simple">
+<li><em>New</em>: announcements from <em>DomainParticipants</em> that are considered new from the service
+perspective.</li>
+<li><em>Update</em>: announcements from <em>DomainParticipants</em> that the service has already seen but
+that contain content changes relative to the previous announcement from
+the same <em>DomainParticipant</em>. For example, QoS changes in the <em>DomainParticipant</em>.</li>
+<li><em>Refresh</em>: announcements from <em>DomainParticipants</em> that the service has already seen and
+that do not contain any content changes from the previously received
+announcement.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>This classification allows the forwarder to process the different categories
+differently, allowing you to prioritize and regulate the bandwidth used by each
+traffic class.</p>
+<ul class="simple">
+<li><strong>Flow Controller</strong>: The entity that removes announcements from the queue and
+forwards them to the proper destinations. The flow controller regulates the
+the output announcement traffic. The flow controller uses the send resources
+to direct the announcements to the proper <em>DomainParticipants</em>.</li>
+</ul>
+<div class="section" id="flow-controller">
+<h3>3.3.1. Flow controller<a class="headerlink" href="#flow-controller" title="Permalink to this headline">¶</a></h3>
+<p><em>Cloud Discovery Service</em> incorporates a configurable flow controller that allows shaping the
+generated output traffic as result of forwarding participant announcements. The
+parameters that configure a flow controller are:</p>
+<ul class="simple">
+<li><strong>Output capacity</strong>: The maximum amount of announcements forwarded in a period
+of time. It is measured in jobs per time unit (e.g. announcements per second).
+Each received announcement represents a <em>job</em> to forward such announcement to
+all the discovered <em>DomainParticipants</em>. This parameter allows setting an upper bound to the
+output traffic to avoid network congestion.</li>
+<li><strong>Maximum job burst</strong>: The maximum amount of consecutive jobs that can be
+forwarded in a period of time. This parameter allows setting an upper limit
+to the output traffic peak.</li>
+<li><strong>Flush period</strong>: The period at which the flow controller attempts to forward
+pending announcements.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Because forwarding an announcement requires sending each announcement to
+multiple discovered participants, the actual output bandwidth depends on the
+number of participants.</p>
+</div>
+<div class="section" id="operation-mode">
+<h4>3.3.1.1. Operation mode<a class="headerlink" href="#operation-mode" title="Permalink to this headline">¶</a></h4>
+<p>The flow controller generates <em>job tokens</em> at the rate specified by the
+<em>output capacity</em>.
+Forwarding an announcement takes exactly one job token. The forwarder queues
+announcements upon reception and attempts to forward them as soon as tokens are
+available.</p>
+<p>If tokens are not available, the announcement jobs will remain in the queue
+in a pending state. The forwarder wakes up at every <em>flush period</em> to check for
+available tokens to forward the pending announcements.</p>
+<p>If tokens are generated faster than jobs are received, the flow controller
+accumulates the tokens for future jobs. The flow controller will accumulate
+no more than the <em>maximum job burst</em> tokens.</p>
+</div>
+</div>
+</div>
+<div class="section" id="database">
+<span id="section-database"></span><h2>3.4. Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h2>
+<p><em>Cloud Discovery Service</em> uses an internal database to keep information about remote entities. This
+is the information that represents the discovery state of the system.</p>
+<p>This state is maintained upon reception of discovery information. Remote entries
+in the database are added or removed based on the received information. The
+database, will release the resources for each removed entry as needed.</p>
+<p><em>Cloud Discovery Service</em> relies on a dedicated thread that periodically cleans up any removed
+state from the database. This model enhances concurrency while maintaining
+thread safety.</p>
+<p>This element is equivalent to the <a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//Database_Thread.htm#threading_3235324107_746159">Database Thread</a>
+of a <em>DomainParticipant</em>.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="configuration.html" class="btn btn-neutral float-right" title="4. Configuration" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="installation.html" class="btn btn-neutral" title="2. Installation" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Real-Time Innovations, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

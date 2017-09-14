@@ -1,0 +1,330 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>7. Troubleshooting &mdash; RTI Cloud Discovery Service 5.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="RTI Cloud Discovery Service 5.3.0 documentation" href="index.html"/>
+        <link rel="next" title="8. Release Notes" href="release_notes.html"/>
+        <link rel="prev" title="6. Tutorials" href="tutorials.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI Cloud Discovery Service
+          
+
+          
+            
+            <img src="_static/rti-logo-FINALv2-White-OrangeDot.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_concepts.html">3. Core Concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">4. Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">5. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">6. Tutorials</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">7. Troubleshooting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#my-applications-don-t-communicate">7.1. My applications don&#8217;t communicate</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#make-sure-your-application-can-accept-unknown-peers">7.1.1. Make sure your application can accept unknown peers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-that-your-initial-peers-list-points-to-cds">7.1.2. Check that your initial peers list points to <em>Cloud Discovery Service</em></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-where-your-cds-instance-is-listening">7.1.3. See where your <em>Cloud Discovery Service</em> instance is listening</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#cds-log-errors">7.2. <em>Cloud Discovery Service</em> log errors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#invalid-port">7.2.1. Invalid port</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#port-already-in-use">7.2.2. Port already in use</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">8. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">RTI Cloud Discovery Service</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>7. Troubleshooting</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="troubleshooting">
+<span id="section-troubleshooting"></span><h1>7. Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h1>
+<p>This section covers a few issues you may run into while deploying your system
+with <em>Cloud Discovery Service</em>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All the issues addressed in this section assume that your applications
+would communicate directly with each other without <em>Cloud Discovery Service</em>.</p>
+</div>
+<div class="section" id="my-applications-don-t-communicate">
+<h2>7.1. My applications don&#8217;t communicate<a class="headerlink" href="#my-applications-don-t-communicate" title="Permalink to this headline">¶</a></h2>
+<p>There can be many reasons why your applications may not communicate with <em>Cloud Discovery Service</em>.
+Nevertheless, below are some of the common issues you may run into.</p>
+<div class="section" id="make-sure-your-application-can-accept-unknown-peers">
+<h3>7.1.1. Make sure your application can accept unknown peers<a class="headerlink" href="#make-sure-your-application-can-accept-unknown-peers" title="Permalink to this headline">¶</a></h3>
+<p>For <em>DomainParticipants</em> to discover each other through <em>Cloud Discovery Service</em>, they require the ability to
+accept unknown peers. This is a Discovery QoS setting whose default value is
+true. Make sure your <em>DomainParticipants</em> are created with this value. For instance, you can
+add the following XML setting to the <code class="docutils literal"><span class="pre">&lt;participant_qos&gt;</span></code> element used
+by your application:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;discovery&gt;</span>
+    <span class="nt">&lt;accept_unknown_peers&gt;</span>true<span class="nt">&lt;/accept_unknown_peers&gt;</span>
+<span class="nt">&lt;/discovery&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="check-that-your-initial-peers-list-points-to-cds">
+<h3>7.1.2. Check that your initial peers list points to <em>Cloud Discovery Service</em><a class="headerlink" href="#check-that-your-initial-peers-list-points-to-cds" title="Permalink to this headline">¶</a></h3>
+<p>Your applications are required to provide discovery information to <em>Cloud Discovery Service</em>.
+For that, they must know where <em>Cloud Discovery Service</em> is running. You provide this
+information through the initial peers list using an
+<a class="reference internal" href="core_concepts.html#section-domain-list-rtps-peer-descriptor"><span class="std std-ref">RTPS peer descriptor</span></a>.</p>
+<p>You can specify the initial peers list through the Discovery QoS (
+programmatically, XML, or the environment). For instance, assuming a <em>Cloud Discovery Service</em>
+instance is running on UDP, port 7400 and host CDS_HOST:</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-number">Listing 7.1 </span><span class="caption-text">XML</span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
+<div class="highlight-xml"><div class="highlight"><pre><span></span> <span class="nt">&lt;discovery&gt;</span>
+     <span class="nt">&lt;initial_peers&gt;</span>
+         <span class="nt">&lt;element&gt;</span>rtps@udpv4://CDS_HOST:7400<span class="nt">&lt;/element&gt;</span>
+     <span class="nt">&lt;/initial_peers&gt;</span>
+ <span class="nt">&lt;/discovery&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-number">Listing 7.2 </span><span class="caption-text">environment</span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span> <span class="nb">export</span> <span class="nv">NDDS_DISCOVERY_PEERS</span><span class="o">=</span>rtps@udpv4://CDS_HOST:7400
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="see-where-your-cds-instance-is-listening">
+<h3>7.1.3. See where your <em>Cloud Discovery Service</em> instance is listening<a class="headerlink" href="#see-where-your-cds-instance-is-listening" title="Permalink to this headline">¶</a></h3>
+<p>To verify that <em>Cloud Discovery Service</em> is actually listening where you specified, you can run
+with <code class="docutils literal"><span class="pre">-verbosity</span> <span class="pre">4</span></code> and look for the following message:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>...
+<span class="o">[</span>CDS DETECTOR<span class="o">]</span> listening <span class="k">for</span> announcements on:
+    udpv4://172.17.0.2:10000
+...
+</pre></div>
+</div>
+<p>The message above indicates that <em>Cloud Discovery Service</em> is listening on the interface
+<code class="docutils literal"><span class="pre">172.17.0.2</span></code> over the <code class="docutils literal"><span class="pre">UDP</span></code> transport on port <code class="docutils literal"><span class="pre">10000</span></code>.</p>
+<p>Additionally, make sure the <em>Cloud Discovery Service</em> location is reachable from where your
+applications run.</p>
+</div>
+</div>
+<div class="section" id="cds-log-errors">
+<h2>7.2. <em>Cloud Discovery Service</em> log errors<a class="headerlink" href="#cds-log-errors" title="Permalink to this headline">¶</a></h2>
+<p>This section shows a few of the errors that <em>Cloud Discovery Service</em> shows on startup.</p>
+<div class="section" id="invalid-port">
+<h3>7.2.1. Invalid port<a class="headerlink" href="#invalid-port" title="Permalink to this headline">¶</a></h3>
+<p>Error log output if an invalid port is specified.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>...
+NDDS_Transport_UDPv4_Socket_bindWithIp:OS bind<span class="o">()</span> failure, error <span class="m">0</span>: Success
+NDDS_Transport_UDPv4_Socket_bindWithIp:invalid port <span class="m">70000</span>
+NDDS_Transport_UDPv4_SocketFactory_create_receive_socket:invalid port <span class="m">70000</span>
+NDDS_Transport_UDP_create_recvresource_rrEA:!create socket
+COMMENDLocalReaderRW_init:!create unicast entryPort
+...
+</pre></div>
+</div>
+<p>The example above shows an error binding a UDP socket to port 70000, which is
+out of the valid port range for this transport.</p>
+</div>
+<div class="section" id="port-already-in-use">
+<h3>7.2.2. Port already in use<a class="headerlink" href="#port-already-in-use" title="Permalink to this headline">¶</a></h3>
+<p>Error log output if a port that is already in use is specified.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>...
+NDDS_Transport_UDPv4_Socket_bindWithIp:0X1CE8 in use
+NDDS_Transport_UDPv4_SocketFactory_create_receive_socket:invalid port <span class="m">7400</span>
+NDDS_Transport_UDP_create_recvresource_rrEA:!create socket
+COMMENDLocalReaderRW_init:!create unicast entryPort
+...
+</pre></div>
+</div>
+<p>The example above shows an error binding a UDP socket to port 7400, which is
+being used by other process.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="release_notes.html" class="btn btn-neutral float-right" title="8. Release Notes" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="tutorials.html" class="btn btn-neutral" title="6. Tutorials" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Real-Time Innovations, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

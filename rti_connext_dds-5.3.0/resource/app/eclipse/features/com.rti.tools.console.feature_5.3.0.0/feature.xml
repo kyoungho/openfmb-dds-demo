@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<feature id="com.rti.tools.console.feature" label="Admin Console Feature" provider-name="Real-Time Innovations, Inc." version="5.3.0.0">
+  <description url="www.rti.com">This feature includes all admin console plugins</description>
+  <copyright url="http://www.example.com/copyright">[Enter Copyright Description here.]</copyright>
+  <license url="http://www.example.com/license">[Enter License Description here.]</license>
+  <plugin download-size="1522" id="ca.odell.glazedlists" install-size="1693" version="1.9.0"></plugin>
+  <plugin download-size="582" id="com.rti.dds" install-size="667" version="5.3.0.0"></plugin>
+  <plugin download-size="249" id="com.rti.dds.tools.distributedlogger" install-size="720" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="11" id="com.rti.dds.tools.infrastructure.logging" install-size="16" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="4863" id="com.rti.tools.console" install-size="7210" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="825" id="com.rti.tools.console.editor.catalog" install-size="7168" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="647" id="com.rti.tools.console.entitymodel" install-size="1577" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="134" id="com.rti.tools.services.persistence" install-size="529" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="423" id="com.rti.tools.services.recording" install-size="1551" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="924" id="com.rti.tools.services.routing" install-size="3129" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="427" id="org.apache.log4j" install-size="472" version="1.2.16"></plugin>
+  <plugin download-size="41" id="com.rti.tools.console.subscriptionservice" install-size="81" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="53" id="com.rti.tools.console.subscriptionservice.dynamicdata" install-size="118" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="774" id="com.rti.tools.console.utils" install-size="1075" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="26" id="com.rti.tools.console.historianservice" install-size="46" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="148" id="com.rti.tools.console.data" install-size="266" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="1225" id="com.rti.tools.console.visualization" install-size="1734" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="244" id="com.rti.tools.console.visualization.views" install-size="528" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="260" id="com.rti.tools.services.queuing" install-size="579" unpack="false" version="5.3.0.0"></plugin>
+  <plugin download-size="49" id="com.rti.tools.securitylogger" install-size="110" unpack="false" version="5.3.0.0"></plugin>
+</feature>
+

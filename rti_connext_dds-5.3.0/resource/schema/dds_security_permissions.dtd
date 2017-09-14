@@ -1,0 +1,43 @@
+<!-- 
+ (c) Copyright, Real-Time Innovations, 2014-2016.
+ All rights reserved.
+ No duplications, whole or partial, manual or electronic, may be made
+ without express written permission.  Any such copies, or
+ revisions thereof, must display this notice unaltered.
+ This code contains trade secrets of Real-Time Innovations, Inc.
+
+Description
+Permissions Grants DTD
+-->
+
+<!ELEMENT dds (permissions)>
+<!ATTLIST dds xmlns:xsi CDATA #IMPLIED>
+<!ATTLIST dds xsi:noNamespaceSchemaLocation CDATA #IMPLIED>
+<!ATTLIST dds version CDATA "5.2.5">
+<!ELEMENT permissions (grant+)>
+<!ELEMENT grant (subject_name,validity,((allow_rule|deny_rule)+),default)>
+<!ATTLIST grant name CDATA #REQUIRED>
+<!ELEMENT subject_name (#PCDATA)>
+<!ELEMENT validity (not_before,not_after)>
+<!ELEMENT not_before (#PCDATA)>
+<!ELEMENT not_after (#PCDATA)>
+<!ELEMENT allow_rule (domains,(publish*),(subscribe*),(relay)*)>
+<!ELEMENT deny_rule (domains,(publish*),(subscribe*),(relay)*)>
+<!ELEMENT domains (id|id_range)+>
+<!ELEMENT id (#PCDATA)>
+<!ELEMENT id_range (min?,max?)>
+<!ELEMENT min (#PCDATA)>
+<!ELEMENT max (#PCDATA)>
+<!ELEMENT publish ((topics|partitions|data_tags)+)>
+<!ELEMENT subscribe ((topics|partitions|data_tags)+)>
+<!ELEMENT relay ((topics|partitions|data_tags)+)>
+<!ELEMENT topics (topic+)>
+<!ELEMENT partitions (partition+)>
+<!ELEMENT topic (#PCDATA)>
+<!ELEMENT partition (#PCDATA)>
+<!ELEMENT data_tags (tag+)>
+<!ELEMENT tag ((name,value)+)>
+<!ELEMENT name (#PCDATA)>
+<!ELEMENT value (#PCDATA)>
+<!ELEMENT default (#PCDATA)> <!-- restriction: ALLOW or DENY -->
+

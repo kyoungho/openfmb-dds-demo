@@ -1,0 +1,45 @@
+##/* $Id$
+##
+##   (c) Copyright, Real-Time Innovations, Inc. 2015.  All rights reserved.
+##   No duplications, whole or partial, manual or electronic, may be made
+##   without prior written permission.  Any such copies, or
+##   revisions thereof, must display this notice unaltered.
+##   This code contains trade secrets of Real-Time Innovations, Inc.
+##modification history:
+##---------------------
+##2.3,11sep15,djs created 
+##========================================================================*/*#
+
+${envMap.POUND_CHAR}include <iostream>
+${envMap.POUND_CHAR}include "${envMap.idlFileName}_publisher.hpp"
+
+PublisherApp::PublisherApp()
+    : writer(nullptr),
+      sample_count(0)
+{
+}
+
+void PublisherApp::setup(int domain_id)
+{
+    // Create a DomainParticipant with default Qos
+    dds::domain::DomainParticipant participant(domain_id);
+
+    // Create a Topic -- and automatically register the type
+    dds::topic::Topic<${constructMap.nativeFQName}> topic(
+        participant, 
+        "Example ${constructMap.nativeCFQName}");
+
+    // Create a DataWriter with default Qos
+    writer = dds::pub::DataWriter<${constructMap.nativeFQName}>(
+        rti::pub::implicit_publisher(participant), 
+        topic);
+}
+
+void PublisherApp::publish() 
+{
+    // Modify the data to be written here
+
+    sample_count++;
+    std::cout << "Writing ${constructMap.nativeFQName}, count " << sample_count << std::endl;
+    writer.write(sample);
+}		     

@@ -1,0 +1,1248 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. Configuration &mdash; RTI Cloud Discovery Service 5.3.0 documentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="_static/theme_overrides.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="genindex.html"/>
+        <link rel="search" title="Search" href="search.html"/>
+    <link rel="top" title="RTI Cloud Discovery Service 5.3.0 documentation" href="index.html"/>
+        <link rel="next" title="5. Usage" href="usage.html"/>
+        <link rel="prev" title="3. Core Concepts" href="core_concepts.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> RTI Cloud Discovery Service
+          
+
+          
+            
+            <img src="_static/rti-logo-FINALv2-White-OrangeDot.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                5.3.0
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">2. Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="core_concepts.html">3. Core Concepts</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-cloud-discovery-service">4.1. Configuring Cloud Discovery Service</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#terms-to-know">4.2. Terms to Know</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-load-the-xml-configuration">4.3. How to Load the XML Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xml-syntax-and-validation">4.4. XML Syntax and Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#xml-tags-for-configuring-project">4.5. XML Tags for Configuring RTI Cloud Discovery Service</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cloud-discovery-service">4.5.1. Cloud Discovery Service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-specify-a-configuration-in-xml">4.5.1.1. Example: Specify a configuration in XML</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#domain-list">4.5.2. Domain List</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-deny-a-few-specific-domains">4.5.2.1. Example: Deny a few specific domains</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-allow-a-subset-of-domains">4.5.2.2. Example: Allow a subset of domains</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#transport">4.5.3. Transport</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#pre-registered-udp-transport">4.5.3.1. Pre-registered UDP transport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pre-registered-tcp-transport">4.5.3.2. Pre-registered TCP transport</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-reusing-udp-transport-instance-for-multiple-receive-resources">4.5.3.3. Example: Reusing UDP transport instance for multiple receive resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-a-receive-resource-for-each-udp-and-tcp-transport">4.5.3.4. Example: A Receive resource for each UDP and TCP transport</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#forwarder">4.5.4. Forwarder</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example-flow-controller">4.5.4.1. Example: Flow controller</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#database">4.5.5. Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#resource-limits">4.5.6. Resource Limits</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#built-in-configuration">4.6. Built-in configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overriding-xml-settings">4.7. Overriding XML settings</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">5. Usage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorials.html">6. Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">7. Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_notes.html">8. Release Notes</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">RTI Cloud Discovery Service</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>4. Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuration">
+<span id="section-configuration"></span><h1>4. Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="configuring-cloud-discovery-service">
+<h2>4.1. Configuring Cloud Discovery Service<a class="headerlink" href="#configuring-cloud-discovery-service" title="Permalink to this headline">¶</a></h2>
+<p>This document describes how to configure <em>Cloud Discovery Service</em>. For installation instructions
+or to walk through some simple examples, please see the appropriate section.</p>
+<p>When you start <em>Cloud Discovery Service</em>, you can specify a configuration file in XML format. In
+that file, you can set properties that control the behavior of the service.
+This chapter describes how to write a configuration file.</p>
+</div>
+<div class="section" id="terms-to-know">
+<h2>4.2. Terms to Know<a class="headerlink" href="#terms-to-know" title="Permalink to this headline">¶</a></h2>
+<p>Before learning how to configure <em>Cloud Discovery Service</em>, you should become familiar with a few
+key terms and concepts:</p>
+<ul class="simple">
+<li>A <em>Cloud Discovery Service</em> Configuration—represented by the <code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code> XML
+tag—refers to an execution of <em>Cloud Discovery Service</em>.</li>
+</ul>
+</div>
+<div class="section" id="how-to-load-the-xml-configuration">
+<span id="section-how-to-load-the-xml-configuration"></span><h2>4.3. How to Load the XML Configuration<a class="headerlink" href="#how-to-load-the-xml-configuration" title="Permalink to this headline">¶</a></h2>
+<p><em>Cloud Discovery Service</em> loads its XML configuration from multiple locations. This section
+presents the various sources of configuration files, listed in load order.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">[working</span> <span class="pre">directory]/USER_CLOUD_DISCOVERY_SERVICE.xml</span></code>
+This file is loaded automatically if it exists.</li>
+<li><code class="docutils literal"><span class="pre">[NDDSHOME]/resource/xml/RTI_CLOUD_DISCOVERY_SERVICE.xml</span></code>
+This file is loaded automatically if it exists.</li>
+<li>File specified using the command-line parameter <code class="docutils literal"><span class="pre">-cfgFile</span></code>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>The tag <code class="docutils literal"><span class="pre">[working</span> <span class="pre">directory]</span></code> indicates the path to the current working
+directory from which you run the <em>Cloud Discovery Service</em>.</p>
+<p class="last">The tag <code class="docutils literal"><span class="pre">[NDDSHOME]</span></code> indicates the path to your Connext DDS installation.</p>
+</div>
+<p>You may use a combination of the above sources and load multiple configuration
+files.</p>
+<p>Here is an example configuration file. You will learn the meaning of each
+line as you read the rest of this section.</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span>  <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+  <span class="nt">&lt;dds&gt;</span>
+    <span class="nt">&lt;cloud_discovery_service</span> <span class="na">name=</span><span class="s">&quot;MyCds&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;transport&gt;</span>
+            <span class="nt">&lt;element&gt;</span>
+                <span class="nt">&lt;alias&gt;</span>udpv4<span class="nt">&lt;/alias&gt;</span>
+                <span class="nt">&lt;receive_port&gt;</span>7400<span class="nt">&lt;/receive_port&gt;</span>
+            <span class="nt">&lt;/element&gt;</span>
+        <span class="nt">&lt;/transport&gt;</span>
+        <span class="nt">&lt;domain_list&gt;</span>
+            <span class="nt">&lt;allow_domain_id&gt;</span>0<span class="nt">&lt;/allow_domain_id&gt;</span>
+        <span class="nt">&lt;/domain_list&gt;</span>
+        <span class="nt">&lt;forwarder&gt;</span>
+            <span class="nt">&lt;flow_controller&gt;</span>
+                <span class="nt">&lt;output_capacity</span> <span class="na">unit=</span><span class="s">&quot;KILOBYTES_PER_SECOND&quot;</span><span class="nt">&gt;</span>
+                    100
+                <span class="nt">&lt;/output_capacity&gt;</span>
+            <span class="nt">&lt;/flow_controller&gt;</span>
+        <span class="nt">&lt;/forwarder&gt;</span>
+        <span class="nt">&lt;database&gt;</span>
+            <span class="nt">&lt;cleanup_period&gt;</span>
+                <span class="nt">&lt;sec&gt;</span>30<span class="nt">&lt;/sec&gt;</span>
+            <span class="nt">&lt;/cleanup_period&gt;</span>
+        <span class="nt">&lt;/database&gt;</span>
+    <span class="nt">&lt;/cloud_discovery_service&gt;</span>
+  <span class="nt">&lt;/dds&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="xml-syntax-and-validation">
+<span id="section-xml-syntax-and-validation"></span><h2>4.4. XML Syntax and Validation<a class="headerlink" href="#xml-syntax-and-validation" title="Permalink to this headline">¶</a></h2>
+<p>The XML representation of DDS-related resources must follow these syntax rules:</p>
+<ul class="simple">
+<li>It shall be a well-formed XML document according to the criteria defined in
+clause 2.1 of [XML].</li>
+<li>It shall use UTF-8 character encoding for XML elements and values.</li>
+<li>It shall use &lt;dds&gt; as the root tag of every document.</li>
+</ul>
+<p>To validate the loaded configuration, <em>Cloud Discovery Service</em> relies on an XSD file that
+describes the format of the XML content. We recommend including a reference to
+this document in the XML file that contains the service&#8217;s configuration; this
+provides helpful features in code editors such as Visual Studio®, Eclipse®, and
+NetBeans®, including validation and auto-completion while you are editing the
+XML file.</p>
+<p>The XSD definitions of the XML elements are in
+<code class="docutils literal"><span class="pre">[NDDSHOME]/resources/schema/rti_cloud_discovery_service.xsd</span></code></p>
+<p>To include a reference to the XSD document in your XML file, use the attribute
+<code class="docutils literal"><span class="pre">xsi:noNamespaceSchemaLocation</span></code> in the <code class="docutils literal"><span class="pre">&lt;dds&gt;</span></code> tag. For example:</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;dds</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+    <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;[NDDSHOME]/resource/schema/rti_cloud_discovery_service.xsd&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- ... --&gt;</span>
+<span class="nt">&lt;/dds&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The tag <code class="docutils literal"><span class="pre">[NDDSHOME]</span></code> indicates the path to your Connext DDS installation.</p>
+</div>
+</div>
+<div class="section" id="xml-tags-for-configuring-project">
+<span id="section-xml-tags-for-configuring-cloud-discovery-service"></span><h2>4.5. XML Tags for Configuring RTI Cloud Discovery Service<a class="headerlink" href="#xml-tags-for-configuring-project" title="Permalink to this headline">¶</a></h2>
+<p>This section describes the XML tags you can use in a <em>Cloud Discovery Service</em> configuration file.
+The following diagram and <a class="reference internal" href="#tabletopleveltag"><span class="std std-numref">Table 4.1</span></a> describe the top-level
+tags allowed within the root <code class="docutils literal"><span class="pre">&lt;dds&gt;</span></code> tag.</p>
+<div class="figure align-center" id="figuretopleveltag">
+<a class="reference internal image-reference" href="_images/CdsXmlDdsTag.svg"><img alt="Top-level Tags in the Configuration File" src="_images/CdsXmlDdsTag.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Figure 4.1 </span><span class="caption-text">Top-level Tags in the Configuration File</span></p>
+</div>
+<table border="1" class="colwidths-given docutils" id="tabletopleveltag">
+<caption><span class="caption-number">Table 4.1 </span><span class="caption-text">Top-level Tags in the Configuration File</span><a class="headerlink" href="#tabletopleveltag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;dds&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code></td>
+<td><p class="first">Specifies a <em>Cloud Discovery Service</em> configuration. <br /></p>
+<dl class="last docutils">
+<dt>Attributes</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">name</span></code>: uniquely identifies a service configuration. Required.</li>
+</ul>
+</dd>
+<dt>Example</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cloud_discovery_service</span> <span class="na">name=</span><span class="s">&quot;ExampleService&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!-- your service settings ... --&gt;</span>
+<span class="nt">&lt;/cloud_discovery_service&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+<td>1..*.</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="cloud-discovery-service">
+<span id="section-cloud-discovery-service-tag"></span><h3>4.5.1. Cloud Discovery Service<a class="headerlink" href="#cloud-discovery-service" title="Permalink to this headline">¶</a></h3>
+<p>A configuration file must have at least one <code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code>
+tag. This tag is used to configure an execution of <em>Cloud Discovery Service</em>. A configuration file
+may contain multiple <code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code> tags.</p>
+<p>When you start <em>Cloud Discovery Service</em>, you can specify which <code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code> tag
+to use to configure the service using the <code class="docutils literal"><span class="pre">-cfgName</span></code> command-line parameter.</p>
+<p>Because a configuration file may contain multiple <code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code>
+tags, one file can be used to configure multiple <em>Cloud Discovery Service</em> executions.</p>
+<p><a class="reference internal" href="#figureclouddiscoveryservicetag"><span class="std std-numref">Figure 4.2</span></a> and
+<a class="reference internal" href="#tableclouddiscoveryservicetag"><span class="std std-numref">Table 4.2</span></a> describe the tags allowed within a
+<code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code> tag.</p>
+<div class="figure align-center" id="figureclouddiscoveryservicetag">
+<a class="reference internal image-reference" href="_images/CdsXmlServiceTag.svg"><img alt="Cloud Discovery Service Tag" src="_images/CdsXmlServiceTag.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Figure 4.2 </span><span class="caption-text">Cloud Discovery Service Tag Structure</span></p>
+</div>
+<table border="1" class="colwidths-given docutils" id="tableclouddiscoveryservicetag">
+<caption><span class="caption-number">Table 4.2 </span><span class="caption-text">Cloud Discovery Service Tag</span><a class="headerlink" href="#tableclouddiscoveryservicetag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;domain_list&gt;</span></code></td>
+<td>Set of domains for which the service forwards participant
+announcements. <br />
+<a class="reference internal" href="#section-config-domain-list"><span class="std std-numref">Section 4.5.2</span></a>.</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;transport&gt;</span></code></td>
+<td>Selection of unicast transport resources where the service receives
+and sends participant announcements. <br />
+<a class="reference internal" href="#section-config-transport"><span class="std std-numref">Section 4.5.3</span></a></td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;forwarder&gt;</span></code></td>
+<td>Configures the behavior of the participant announcement forwarding
+logic. <br />
+<a class="reference internal" href="#section-config-forwarder"><span class="std std-numref">Section 4.5.4</span></a></td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;database&gt;</span></code></td>
+<td>Configures the behavior of the service internal database that contains
+information about the discovery state. <br />
+<a class="reference internal" href="#section-config-database"><span class="std std-numref">Section 4.5.5</span></a></td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;resource_limits&gt;</span></code></td>
+<td>Service resource management policies. <br />
+<a class="reference internal" href="#section-config-resource-limits"><span class="std std-numref">Section 4.5.6</span></a></td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="example-specify-a-configuration-in-xml">
+<h4>4.5.1.1. Example: Specify a configuration in XML<a class="headerlink" href="#example-specify-a-configuration-in-xml" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;dds&gt;</span>
+    <span class="nt">&lt;cloud_discovery_service</span> <span class="na">name=</span><span class="s">&quot;EmptyConfiguration&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;cloud_discovery_service</span> <span class="na">name=</span><span class="s">&quot;ShapesDemoConfiguration&quot;</span><span class="nt">&gt;</span>
+    <span class="c">&lt;!--...--&gt;</span>
+    <span class="nt">&lt;/cloud_discovery_service&gt;</span>
+<span class="nt">&lt;/dds&gt;</span>
+</pre></div>
+</td></tr></table></div>
+<p>Starting <em>Cloud Discovery Service</em> with the following command will use the
+<code class="docutils literal"><span class="pre">&lt;cloud_discovery_service&gt;</span></code> tag with the name <code class="docutils literal"><span class="pre">EmptyConfiguration</span></code>.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="nv">$NDDSHOME</span>/bin/rticlouddiscoveryservice <span class="se">\</span>
+        -cfgFile file.xml -cfgName EmptyConfiguration
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="domain-list">
+<span id="section-config-domain-list"></span><h3>4.5.2. Domain List<a class="headerlink" href="#domain-list" title="Permalink to this headline">¶</a></h3>
+<p>A <code class="docutils literal"><span class="pre">&lt;domain_list&gt;</span></code> allows you to control for which domains the discovery traffic
+is propagated. <a class="reference internal" href="#tabledomainlisttag"><span class="std std-numref">Table 4.3</span></a> describes the tags allowed.</p>
+<table border="1" class="colwidths-given docutils" id="tabledomainlisttag">
+<caption><span class="caption-number">Table 4.3 </span><span class="caption-text">Domain List Tag</span><a class="headerlink" href="#tabledomainlisttag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;domain_list&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;allow_domain_id&gt;</span></code></td>
+<td>Set of domain IDs where the service forwards participant announcements.
+<br />
+<strong>Default:</strong> <code class="docutils literal"><span class="pre">DOMAIN_LIST_ALL</span></code></td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;deny_domain_id&gt;</span></code></td>
+<td>Subset of the allowed domain IDs for which the service ignores
+announcements. <br />
+<strong>Default:</strong> [empty string]</td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal"><span class="pre">&lt;allow_domain_id&gt;</span></code> and <code class="docutils literal"><span class="pre">&lt;deny_domain_id&gt;</span></code> filters both allow the same
+syntax with which a subset of domains can be specified as a comma-separated list
+containing one more of the following elements:</p>
+<ul class="simple">
+<li>Individual domains: <code class="docutils literal"><span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7</span></code></li>
+<li>Domain Range: <code class="docutils literal"><span class="pre">[1</span> <span class="pre">-</span> <span class="pre">10]</span></code></li>
+<li><dl class="first docutils">
+<dt>Special values:</dt>
+<dd><ul class="first last">
+<li><code class="docutils literal"><span class="pre">DOMAIN_LIST_ALL</span></code>: specifies all the available domains.</li>
+<li>(empty string): specifies none of the domains.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="example-deny-a-few-specific-domains">
+<h4>4.5.2.1. Example: Deny a few specific domains<a class="headerlink" href="#example-deny-a-few-specific-domains" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nt">&lt;domain_list&gt;</span>
+    <span class="nt">&lt;allow_domain_id&gt;</span>DOMAIN_LIST_ALL<span class="nt">&lt;/allow_domain_id&gt;</span>
+    <span class="nt">&lt;deny_domain_id&gt;</span>5,7,10<span class="nt">&lt;/deny_domain_id&gt;</span>
+ <span class="nt">&lt;/domain_list&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="example-allow-a-subset-of-domains">
+<h4>4.5.2.2. Example: Allow a subset of domains<a class="headerlink" href="#example-allow-a-subset-of-domains" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span> <span class="nt">&lt;domain_list&gt;</span>
+    <span class="nt">&lt;allow_domain_id&gt;</span>[10 - 30], 40, [50 - 100]<span class="nt">&lt;/allow_domain_id&gt;</span>
+ <span class="nt">&lt;/domain_list&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="transport">
+<span id="section-config-transport"></span><h3>4.5.3. Transport<a class="headerlink" href="#transport" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">&lt;transport&gt;</span></code> element allows you to select and configure the resources used
+to receive and send discovery traffic. A receive resource is uniquely
+specified by a transport class-receive port pair. For each different transport
+instance specified, <em>Cloud Discovery Service</em> creates a send resource.</p>
+<p><a class="reference internal" href="#figuretransporttag"><span class="std std-numref">Figure 4.3</span></a> and <a class="reference internal" href="#tabletransporttag"><span class="std std-numref">Table 4.4</span></a> shows the
+description of this element.</p>
+<div class="figure align-center" id="figuretransporttag">
+<a class="reference internal image-reference" href="_images/CdsXmlTransportTag.svg"><img alt="Transport Tag" src="_images/CdsXmlTransportTag.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Figure 4.3 </span><span class="caption-text">Transport Tag Structure</span></p>
+</div>
+<table border="1" class="colwidths-given docutils" id="tabletransporttag">
+<caption><span class="caption-number">Table 4.4 </span><span class="caption-text">Transport Tag</span><a class="headerlink" href="#tabletransporttag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;transport&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;element&gt;</span></code></td>
+<td>Individual transport receive resource. <br />
+See <a class="reference internal" href="#tabletransportelementtag"><span class="std std-numref">Table 4.5</span></a>.</td>
+<td>0..*</td>
+</tr>
+</tbody>
+</table>
+<p>Each <code class="docutils literal"><span class="pre">&lt;element&gt;</span></code> within <code class="docutils literal"><span class="pre">&lt;transport&gt;</span></code> is a transport unicast receive
+resource, specified by a transport alias and a receive port.
+<a class="reference internal" href="#tabletransportelementtag"><span class="std std-numref">Table 4.5</span></a> describes the tags allowed.</p>
+<table border="1" class="colwidths-given docutils" id="tabletransportelementtag">
+<caption><span class="caption-number">Table 4.5 </span><span class="caption-text">Transport Element Tag</span><a class="headerlink" href="#tabletransportelementtag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;element&gt;</span></code> of a <code class="docutils literal"><span class="pre">&lt;transport&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;alias&gt;</span></code></td>
+<td><p class="first">Identifies a concrete transport class instantiation. <br />
+<strong>Default:</strong> udpv4 <br /> <br />
+If the transport supports it, you can reuse the same transport instance
+by specifying the same alias. <br /></p>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you attempt to reuse a transport instance of a class that does
+not  support reuse, <em>Cloud Discovery Serivce</em> will log a warning
+and continue loading.</p>
+</div>
+</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;receive_port&gt;</span></code></td>
+<td><p class="first">Port that the service listens on to receive participant announcements. <br />
+<strong>Default:</strong> 7400</p>
+<dl class="last docutils">
+<dt>Attributes:</dt>
+<dd><ul class="first last">
+<li><p class="first"><code class="docutils literal"><span class="pre">kind</span></code>: Specifies the port representation. Optional.</p>
+<blockquote>
+<div><ul>
+<li><p class="first"><strong>PORT</strong>: An integer that represents a port number within the
+valid range allowed by the transport. <br /></p>
+</li>
+<li><p class="first"><strong>DOMAIN_ID_DERIVED</strong>: A domain ID that represents the
+discovery receive port computed from the well-known RTPS port
+mapping:</p>
+<blockquote>
+<div><ul class="simple">
+<li>participant Id: 0</li>
+<li>well-known ports: DDS_INTEROPERABLE_RTPS_WELL_KNOWN_PORTS</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;property&gt;</span></code></td>
+<td><p class="first">A sequence of name-value string pairs that allows configuring the
+underlying transport instance.</p>
+<dl class="last docutils">
+<dt>Example:</dt>
+<dd><div class="first highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;property&gt;</span>
+    <span class="nt">&lt;value&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;name&gt;</span>dds.transport.UDPv4.builtin.allow_interfaces_list<span class="nt">&lt;/name&gt;</span>
+            <span class="nt">&lt;value&gt;</span>eth0<span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/value&gt;</span>
+<span class="nt">&lt;/property&gt;</span>
+</pre></div>
+</div>
+<div class="last admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When reusing a transport instance, if you specify the same
+property twice, <em>Cloud Discovery Service</em> will log a warning.</p>
+</div>
+</dd>
+</dl>
+</td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+<p><em>Cloud Discovery Service</em> comes with the following pre-configured transport instances, which you can
+use and configure directly.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can override any of the preset transport properties. In such a case,
+<em>Cloud Discovery Service</em> will log a warning.</p>
+</div>
+<table border="1" class="colwidths-given docutils" id="tableavailabletransports">
+<caption><span class="caption-number">Table 4.6 </span><span class="caption-text">Available Transports</span><a class="headerlink" href="#tableavailabletransports" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="14%" />
+<col width="71%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Alias</th>
+<th class="head">Description</th>
+<th class="head">Prefix</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">udpv4</span></code> or <code class="docutils literal"><span class="pre">builtin.udpv4</span></code></td>
+<td><p class="first">Built-in implementation of UDP v4. <br /></p>
+<ul class="last simple">
+<li><strong>Class ID</strong>: NDDS_TRANSPORT_CLASSID_UDPV4</li>
+<li><strong>Reuse</strong>: Yes</li>
+</ul>
+</td>
+<td><code class="docutils literal"><span class="pre">dds.transport.UDPv4.builtin</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">udpv6</span></code> or <code class="docutils literal"><span class="pre">builtin.udpv6</span></code></td>
+<td><p class="first">Built-in implementation of UDP v6. <br /></p>
+<ul class="last simple">
+<li><strong>Class ID</strong>: NDDS_TRANSPORT_CLASSID_UDPV6</li>
+<li><strong>Reuse</strong>: Yes</li>
+</ul>
+</td>
+<td><code class="docutils literal"><span class="pre">dds.transport.UDPv6.builtin</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">tcpv4_lan</span></code>, <code class="docutils literal"><span class="pre">tcpv4_wan</span></code>, <code class="docutils literal"><span class="pre">tlsv4_lan</span></code> or <code class="docutils literal"><span class="pre">tlsv4_wan</span></code></td>
+<td><p class="first">Implementation of TCP v4 for LAN and WAN networks. <br /></p>
+<ul class="simple">
+<li><strong>Class ID</strong>: See <strong>parent.classid</strong> in
+<a class="reference internal" href="#tabletcptransportproperties"><span class="std std-numref">Table 4.7</span></a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Your library path requires libraries from RTI TCP Support
+(<code class="docutils literal"><span class="pre">nddstransporttcp</span></code>) and additionally, if enabling TLS,
+RTI TLS Support (<code class="docutils literal"><span class="pre">nddstls</span></code>) and OpenSSL.</p>
+</div>
+<ul class="last simple">
+<li><strong>Reuse</strong>: No</li>
+</ul>
+</td>
+<td><code class="docutils literal"><span class="pre">dds.transport.cds.tcp1</span></code></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="pre-registered-udp-transport">
+<span id="section-registered-udp-transport"></span><h4>4.5.3.1. Pre-registered UDP transport<a class="headerlink" href="#pre-registered-udp-transport" title="Permalink to this headline">¶</a></h4>
+<p><em>Cloud Discovery Service</em> registers an instance for both of the Connext DDS UDPv4 and UDPv6
+built-in transports. There are no preset properties for any of these instances.</p>
+<p>See <a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//Setting_Builtin_Transport_Properties_wit.htm#Table_PropertiesForBuiltinUDPv4Transport">Connext DDS UDPv4 configuration</a> and
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//Setting_Builtin_Transport_Properties_wit.htm#Table_PropertiesForBuiltinUDPv6Transport">Connext DDS UDPv6 configuration</a> for a list of available
+properties.</p>
+</div>
+<div class="section" id="pre-registered-tcp-transport">
+<span id="section-registered-tcp-transport"></span><h4>4.5.3.2. Pre-registered TCP transport<a class="headerlink" href="#pre-registered-tcp-transport" title="Permalink to this headline">¶</a></h4>
+<p><em>Cloud Discovery Service</em> registers an instance of the RTI TCP transport.
+<a class="reference internal" href="#tabletcptransportproperties"><span class="std std-numref">Table 4.7</span></a> shows a list of preset properties.</p>
+<p>See <a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//TCP_TLS_Transport_Properties.htm#configuringtcp_1881750307_1038804">RTI TCP Transport configuration</a> for a list of
+available properties.</p>
+<table border="1" class="colwidths-given docutils" id="tabletcptransportproperties">
+<caption><span class="caption-number">Table 4.7 </span><span class="caption-text">TCP Transport preset properties</span><a class="headerlink" href="#tabletcptransportproperties" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property name (prefix with <code class="docutils literal"><span class="pre">dds.transport.cds.tcp1</span></code>)</th>
+<th class="head">Property value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><strong>library</strong></td>
+<td>nddstransporttcp</td>
+</tr>
+<tr class="row-odd"><td><strong>create_function</strong></td>
+<td>NDDS_Transport_TCPv4_create</td>
+</tr>
+<tr class="row-even"><td><strong>server_bind_port</strong></td>
+<td>The value of the corresponding <code class="docutils literal"><span class="pre">&lt;receive_port&gt;</span></code></td>
+</tr>
+<tr class="row-odd"><td><strong>parent.classid</strong></td>
+<td><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>NDDS_TRANSPORT_CLASSID_TCPV4_LAN</dt>
+<dd><ul class="first last">
+<li>For alias <code class="docutils literal"><span class="pre">tcpv4_lan</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>NDDS_TRANSPORT_CLASSID_TCPV4_WAN</dt>
+<dd><ul class="first last">
+<li>For alias <code class="docutils literal"><span class="pre">tcpv4_wan</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>NDDS_TRANSPORT_CLASSID_TLSV4_LAN</dt>
+<dd><ul class="first last">
+<li>For alias <code class="docutils literal"><span class="pre">tlsv4_lan</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>NDDS_TRANSPORT_CLASSID_TLSV4_WAN</dt>
+<dd><ul class="first last">
+<li>For alias <code class="docutils literal"><span class="pre">tlsv4_wan</span></code></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="example-reusing-udp-transport-instance-for-multiple-receive-resources">
+<h4>4.5.3.3. Example: Reusing UDP transport instance for multiple receive resources<a class="headerlink" href="#example-reusing-udp-transport-instance-for-multiple-receive-resources" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;transport&gt;</span>
+    <span class="nt">&lt;element&gt;</span>
+        <span class="nt">&lt;alias&gt;</span>udpv4<span class="nt">&lt;/alias&gt;</span>
+        <span class="nt">&lt;receive_port&gt;</span>7400<span class="nt">&lt;/receive_port&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;element&gt;</span>
+        <span class="nt">&lt;alias&gt;</span>udpv4<span class="nt">&lt;/alias&gt;</span>
+        <span class="nt">&lt;receive_port&gt;</span>7500<span class="nt">&lt;/receive_port&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/transport&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="example-a-receive-resource-for-each-udp-and-tcp-transport">
+<h4>4.5.3.4. Example: A Receive resource for each UDP and TCP transport<a class="headerlink" href="#example-a-receive-resource-for-each-udp-and-tcp-transport" title="Permalink to this headline">¶</a></h4>
+<p>This example shows how to specify different receive resources from different
+transport instances. Additionally, it shows how to extend the behavior
+of the pre-registered TCP transport through the specification of additional
+transport properties using the transport prefix <code class="docutils literal"><span class="pre">dds.transport.cds.tcp1</span></code>.</p>
+<div class="highlight-xml"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;transport&gt;</span>
+    <span class="nt">&lt;element&gt;</span>
+        <span class="nt">&lt;alias&gt;</span>builtin.UDPv4<span class="nt">&lt;/alias&gt;</span>
+        <span class="nt">&lt;receive_port&gt;</span>7400<span class="nt">&lt;/receive_port&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;element&gt;</span>
+        <span class="nt">&lt;alias&gt;</span>tcpv4_wan<span class="nt">&lt;/alias&gt;</span>
+        <span class="nt">&lt;receive_port&gt;</span>8400<span class="nt">&lt;/receive_port&gt;</span>
+        <span class="nt">&lt;property&gt;</span>
+            <span class="nt">&lt;value&gt;</span>
+                <span class="nt">&lt;element&gt;</span>
+                    <span class="nt">&lt;name&gt;</span>dds.transport.cds.tcp1.tcp1.public_address<span class="nt">&lt;/name&gt;</span>
+                    <span class="nt">&lt;value&gt;</span>35.6.9.10<span class="nt">&lt;/value&gt;</span>
+                <span class="nt">&lt;/element&gt;</span>
+            <span class="nt">&lt;/value&gt;</span>
+        <span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;/element&gt;</span>
+<span class="nt">&lt;/transport&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+<div class="section" id="forwarder">
+<span id="section-config-forwarder"></span><h3>4.5.4. Forwarder<a class="headerlink" href="#forwarder" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">&lt;forwarder&gt;</span></code> element allows you to configure the attributes and behavior
+of the active component involved in the participant announcement forwarding
+process.</p>
+<p><a class="reference internal" href="#figureforwardertag"><span class="std std-numref">Figure 4.4</span></a> and <a class="reference internal" href="#tableforwardertag"><span class="std std-numref">Table 4.8</span></a> shows the
+description of this element.</p>
+<div class="figure align-center" id="figureforwardertag">
+<a class="reference internal image-reference" href="_images/CdsXmlForwarderTag.svg"><img alt="Forwarder Tag" src="_images/CdsXmlForwarderTag.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Figure 4.4 </span><span class="caption-text">Forwarder Tag Structure</span></p>
+</div>
+<table border="1" class="colwidths-given docutils" id="tableforwardertag">
+<caption><span class="caption-number">Table 4.8 </span><span class="caption-text">Forwarder Tag</span><a class="headerlink" href="#tableforwardertag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;forwarder&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;thread_pool&gt;</span></code></td>
+<td><p class="first">Configures the pool of threads dedicated to the forwarding process. <br />
+This element allows you to specify the number of threads as well as
+the properties of those threads.</p>
+<dl class="last docutils">
+<dt>Example</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;thread_pool&gt;</span>
+    <span class="nt">&lt;size&gt;</span>3<span class="nt">&lt;/size&gt;</span>
+    <span class="nt">&lt;mask&gt;</span>MASK_DEFAULT<span class="nt">&lt;/mask&gt;</span>
+    <span class="nt">&lt;priority&gt;</span>THREAD_PRIORITY_DEFAULT<span class="nt">&lt;/priority&gt;</span>
+    <span class="nt">&lt;stack_size&gt;</span>THREAD_STACK_SIZE_DEFAULT<span class="nt">&lt;/stack_size&gt;</span>
+<span class="nt">&lt;/thread_pool&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;flow_controller&gt;</span></code></td>
+<td>Configures the announcement scheduling policy and the output traffic
+control.
+See <a class="reference internal" href="#figureflowcontrollertag"><span class="std std-numref">Figure 4.5</span></a> and
+<a class="reference internal" href="#tableflowcontrollertag"><span class="std std-numref">Table 4.9</span></a>.</td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+<p>The <code class="docutils literal"><span class="pre">&lt;flow_controller&gt;</span></code> element allows you to configure the output traffic
+of <em>Cloud Discovery Service</em>. With the flow controller, you can limit the output capacity, assign
+more of the output capacity to certain participant announcements, and also
+throttle the output traffic.</p>
+<p><a class="reference internal" href="#figureflowcontrollertag"><span class="std std-numref">Figure 4.5</span></a> and <a class="reference internal" href="#tableflowcontrollertag"><span class="std std-numref">Table 4.9</span></a> shows the
+description of this element.</p>
+<div class="figure align-center" id="figureflowcontrollertag">
+<a class="reference internal image-reference" href="_images/CdsXmlFlowControllerTag.svg"><img alt="Flow Controller Tag" src="_images/CdsXmlFlowControllerTag.svg" width="300px" /></a>
+<p class="caption"><span class="caption-number">Figure 4.5 </span><span class="caption-text">Flow Controller Tag Structure</span></p>
+</div>
+<table border="1" class="colwidths-given docutils" id="tableflowcontrollertag">
+<caption><span class="caption-number">Table 4.9 </span><span class="caption-text">Flow Controller Tag</span><a class="headerlink" href="#tableflowcontrollertag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;flow_controller&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;output_capacity&gt;</span></code></td>
+<td>Specifies a limit for the output capacity in jobs per second. <br />
+<strong>Default:</strong> <code class="docutils literal"><span class="pre">LENGTH_UNLIMITED</span></code> <br /></td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;max_burst_jobs&gt;</span></code></td>
+<td>Maximum amount of announcement jobs that can be dispatched at once. <br />
+<strong>Default:</strong> <code class="docutils literal"><span class="pre">&lt;output_capacity&gt;</span></code> * 1 second <br /></td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;output_capacity_allocation&gt;</span></code></td>
+<td><p class="first">Allows configuring the output capacity distribution depending on the
+the participant announcement class.
+See <a class="reference internal" href="#tableoutputcapacityallocationtag"><span class="std std-numref">Table 4.10</span></a></p>
+<dl class="last docutils">
+<dt>Example</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;output_capacity_allocation&gt;</span>
+    <span class="nt">&lt;new&gt;</span>50<span class="nt">&lt;/new&gt;</span>
+    <span class="nt">&lt;update&gt;</span>30<span class="nt">&lt;/update&gt;</span>
+    <span class="nt">&lt;refresh&gt;</span>20<span class="nt">&lt;/refresh&gt;</span>
+<span class="nt">&lt;/output_capacity_allocation&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;flush_period&gt;</span></code></td>
+<td><p class="first">Configures the maximum period at which the forwarder will attempt to
+send pending announcements. <br />
+<strong>Default:</strong> <code class="docutils literal"><span class="pre">DURATION_INFINITE</span></code>.</p>
+<dl class="last docutils">
+<dt>Example</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;flush_period&gt;</span>
+    <span class="nt">&lt;sec&gt;</span>1<span class="nt">&lt;/sec&gt;</span>
+    <span class="nt">&lt;nanosec&gt;</span>0<span class="nt">&lt;/nanosec&gt;</span>
+<span class="nt">&lt;/flush_period&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Configuring only one flow controller parameter in isolation may produce
+inaccurate performance of the forwarder. It is recommended to configure all the
+parameters of the flow controller to guarantee the expected behavior.</p>
+</div>
+<p>The <code class="docutils literal"><span class="pre">&lt;output_capacity_allocation&gt;</span></code> allows you to distribute the output
+capacity to each participant announcement class. Each class element is an
+integer that represents the percentage of the total output capacity used to
+forward announcement of such class.</p>
+<p><a class="reference internal" href="#tableoutputcapacityallocationtag"><span class="std std-numref">Table 4.10</span></a> shows the description of this element.</p>
+<table border="1" class="colwidths-given docutils" id="tableoutputcapacityallocationtag">
+<caption><span class="caption-number">Table 4.10 </span><span class="caption-text">Output Capacity Allocation Tag</span><a class="headerlink" href="#tableoutputcapacityallocationtag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;output_capacity_allocation&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;new&gt;</span></code></td>
+<td>Percentage of the maximum output capacity dedicated to the <strong>new</strong>
+participant announcement class. <br />
+<strong>Default:</strong> 40</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;update&gt;</span></code></td>
+<td>Percentage of the maximum output capacity dedicated to the <strong>update</strong>
+participant announcement class. <br />
+<strong>Default:</strong> 30</td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;refresh&gt;</span></code></td>
+<td>Percentage of the maximum output capacity dedicated to the <strong>refresh</strong>
+participant announcement class. <br />
+<strong>Default:</strong> 30</td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+<p>Note that the sum of the percentages from the three classes can never be
+greater than <strong>100</strong>. Otherwise <em>Cloud Discovery Service</em> will log an error message and fail to
+start. Unless defaults values are used, if the allocation for one or more
+classes are not specified, <em>Cloud Discovery Service</em> will equally split the remaining of the
+output capacity among them.</p>
+<div class="section" id="example-flow-controller">
+<h4>4.5.4.1. Example: Flow controller<a class="headerlink" href="#example-flow-controller" title="Permalink to this headline">¶</a></h4>
+<p>This example shows how to set up a flow controller with a maximum output
+capacity of 5000 jobs/s, of which half is reserved only for new
+participant announcements, and the other half is equally distributed for
+update and refresh classes (25/25).</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;flow_controller&gt;</span>
+    <span class="nt">&lt;output_capacity&gt;</span>5000<span class="nt">&lt;/output_capacity&gt;</span>
+    <span class="nt">&lt;output_capacity_allocation&gt;</span>
+        <span class="nt">&lt;new&gt;</span>50<span class="nt">&lt;/new&gt;</span>
+    <span class="nt">&lt;/output_capacity_allocation&gt;</span>
+<span class="nt">&lt;/flow_controller&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="database">
+<span id="section-config-database"></span><h3>4.5.5. Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">&lt;database&gt;</span></code> element allows you to configure the behavior of the internal
+database that contains the information that represents the discovery state of
+the system.</p>
+<p><a class="reference internal" href="#tabledatabasetag"><span class="std std-numref">Table 4.11</span></a> shows the description of this element.</p>
+<table border="1" class="colwidths-given docutils" id="tabledatabasetag">
+<caption><span class="caption-number">Table 4.11 </span><span class="caption-text">Database Tag</span><a class="headerlink" href="#tabledatabasetag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Relevant tags within <code class="docutils literal"><span class="pre">&lt;database&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;thread&gt;</span></code></td>
+<td>Database thread settings. <br />
+See <strong>thread</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DATABASE_QosPolicy__DDS_Extension_.htm#domains_2763211417_580947">DatabaseQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;cleanup_period&gt;</span></code></td>
+<td><p class="first">The period at which the service database thread wakes up to clean up
+expired information.  <br />
+See <strong>cleanup_period</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DATABASE_QosPolicy__DDS_Extension_.htm#domains_2763211417_580947">DatabaseQosPolicy</a>.</p>
+<dl class="last docutils">
+<dt>Example</dt>
+<dd><div class="first last highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cleanup_period&gt;</span>
+    <span class="nt">&lt;sec&gt;</span>1<span class="nt">&lt;/sec&gt;</span>
+    <span class="nt">&lt;nanosec&gt;</span>0<span class="nt">&lt;/nanosec&gt;</span>
+<span class="nt">&lt;/cleanup_period&gt;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;initial_records&gt;</span></code></td>
+<td>The initial number of total records. <br />
+See <strong>initial_records</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DATABASE_QosPolicy__DDS_Extension_.htm#domains_2763211417_580947">DatabaseQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="resource-limits">
+<span id="section-config-resource-limits"></span><h3>4.5.6. Resource Limits<a class="headerlink" href="#resource-limits" title="Permalink to this headline">¶</a></h3>
+<p>The <code class="docutils literal"><span class="pre">&lt;resource_limits&gt;</span></code> element allows you to specify upper limits of
+memory consumption. In general, <em>Cloud Discovery Service</em> incorporates mechanisms to clean up unused
+memory and maintain the execution within bounds when possible. Nevertheless,
+you may need to tune the memory usage if you have special memory requirements.</p>
+<p><a class="reference internal" href="#tableresourcelimitstag"><span class="std std-numref">Table 4.12</span></a> shows the description of this element.</p>
+<table border="1" class="colwidths-given docutils" id="tableresourcelimitstag">
+<caption><span class="caption-number">Table 4.12 </span><span class="caption-text">Resource Limits Tag</span><a class="headerlink" href="#tableresourcelimitstag" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col width="25%" />
+<col width="63%" />
+<col width="13%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Tags within <code class="docutils literal"><span class="pre">&lt;resource_limits&gt;</span></code></th>
+<th class="head">Description</th>
+<th class="head">Multiplicity</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;remote_participant_allocation&gt;</span></code></td>
+<td>Allocation settings applied to remote DomainParticipants. <br />
+See <strong>remote_participant_allocation</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DOMAINPARTICIPANTRESOURCELIMITSQos.htm#domains_2763211417_555992">DomainParticipantResourceLimitsQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;remote_participant_hash_buckets&gt;</span></code></td>
+<td>Number of hash buckets for remote DomainParticipants. <br />
+See <strong>remote_participant_hash_buckets</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DOMAINPARTICIPANTRESOURCELIMITSQos.htm#domains_2763211417_555992">DomainParticipantResourceLimitsQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;participant_property_list_max_length&gt;</span></code></td>
+<td>Maximum number of properties associated with the DomainParticipant. <br />
+See <strong>participant_property_list_max_length</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DOMAINPARTICIPANTRESOURCELIMITSQos.htm#domains_2763211417_555992">DomainParticipantResourceLimitsQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;participant_property_string_max_length&gt;</span></code></td>
+<td>Maximum string length of the properties associated with the
+DomainParticipant. <br />
+See <strong>participant_property_string_max_length</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DOMAINPARTICIPANTRESOURCELIMITSQos.htm#domains_2763211417_555992">DomainParticipantResourceLimitsQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">&lt;participant_user_data_max_length&gt;</span></code></td>
+<td>Maximum length of user data to send and receive in a participant
+announcement. <br />
+See <strong>participant_user_data_max_length</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DOMAINPARTICIPANTRESOURCELIMITSQos.htm#domains_2763211417_555992">DomainParticipantResourceLimitsQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal"><span class="pre">&lt;transport_info_list_max_length&gt;</span></code></td>
+<td>Maximum number of installed transports to send and receive information
+about a participant announcement. <br />
+See <strong>transport_info_list_max_length</strong> in
+<a class="reference external" href="https://community.rti.com/static/documentation/connext-dds/5.3.0/doc/manuals/connext_dds/html_files/RTI_ConnextDDS_CoreLibraries_UsersManual/index.htm#UsersManual//DOMAINPARTICIPANTRESOURCELIMITSQos.htm#domains_2763211417_555992">DomainParticipantResourceLimitsQosPolicy</a>.</td>
+<td>0..1</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="built-in-configuration">
+<span id="section-configuration-builtin"></span><h2>4.6. Built-in configuration<a class="headerlink" href="#built-in-configuration" title="Permalink to this headline">¶</a></h2>
+<p><em>Cloud Discovery Service</em> comes pre-loaded with a built-in configuration which is selected on
+startup if no configuration name is specified. This built-in configuration is
+equivalent to the following configuration:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;cloud_discovery_service</span> <span class="na">name=</span><span class="s">&quot;rti.cds.builtin.config.default&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;transport&gt;</span>
+        <span class="nt">&lt;element&gt;</span>
+            <span class="nt">&lt;alias&gt;</span>builtin.UDPv4<span class="nt">&lt;/alias&gt;</span>
+            <span class="nt">&lt;receive_port&gt;</span>7400<span class="nt">&lt;/receive_port&gt;</span>
+        <span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/transport&gt;</span>
+    <span class="nt">&lt;domain_list&gt;</span>
+        <span class="nt">&lt;allow_domain_id&gt;</span>DOMAIN_LIST_ALL<span class="nt">&lt;/allow_domain_id&gt;</span>
+    <span class="nt">&lt;/domain_list&gt;</span>
+    <span class="nt">&lt;forwarder&gt;</span>
+        <span class="nt">&lt;thread_pool&gt;</span>
+            <span class="nt">&lt;size&gt;</span>2<span class="nt">&lt;/size&gt;</span>
+        <span class="nt">&lt;/thread_pool&gt;</span>
+    <span class="nt">&lt;/forwarder&gt;</span>
+    <span class="nt">&lt;database&gt;</span>
+        <span class="nt">&lt;cleanup_period&gt;</span>
+            <span class="nt">&lt;sec&gt;</span>50<span class="nt">&lt;/sec&gt;</span>
+        <span class="nt">&lt;/cleanup_period&gt;</span>
+    <span class="nt">&lt;/database&gt;</span>
+<span class="nt">&lt;/cloud_discovery_service&gt;</span>
+</pre></div>
+</div>
+<p>The built-in configuration has the name <code class="docutils literal"><span class="pre">rti.cds.builtin.config.default</span></code>,
+which is reserved; no additional configurations can have this name.</p>
+</div>
+<div class="section" id="overriding-xml-settings">
+<h2>4.7. Overriding XML settings<a class="headerlink" href="#overriding-xml-settings" title="Permalink to this headline">¶</a></h2>
+<p><em>Cloud Discovery Service</em> allows overriding certain XML settings through the use of the command
+line options. When these options are explicitly specified, their values will
+override the values of the equivalent XML elements.</p>
+<p>See <a class="reference internal" href="usage.html#section-cloud-discovery-service-command-line-parameters"><span class="std std-numref">Section 5.3</span></a> for a
+list of the available options that can override XML settings.</p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="usage.html" class="btn btn-neutral float-right" title="5. Usage" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="core_concepts.html" class="btn btn-neutral" title="3. Core Concepts" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, Real-Time Innovations, Inc..
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'5.3.0',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  false
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+      <script type="text/javascript" src="_static/custom.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
