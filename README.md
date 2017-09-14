@@ -88,7 +88,7 @@ You can start the Admin Console through the launcher or simply by typing:
 `rtiadminconsole`
 If you don't see any information in the Admin Console check the security configuration as it is disabled by default. Go to View -> Preferences and select Security. The configuration should look similar to the example below. The path will be different depending on the install directory of the openFMB demo. 
 
-![Admin Console Secure Config](://github.com/openfmb/openfmb-dds-demo/blob/master/images/admin_console.png "Admin Console Security Preferences"). 
+![Admin Console Secure Config](https://github.com/openfmb/openfmb-dds-demo/blob/master/images/admin_console.png "Admin Console Security Preferences"). 
 
  
 
