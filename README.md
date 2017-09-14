@@ -12,7 +12,9 @@ The example has been configured and tested on Ubuntu 16.04 64 bit.
 The repository includes an evaluation version of RTI Connext DDS Secure. To run the example you need to set the following environment variables:
 
 `NDDSHOME = <repository_path>/rti_connext_dds-5.3.0`
+
 `PATH = <repository_path>/rti_connext_dds-5.3.0/bin;$PATH`
+
 `LD_LIBRARY_PATH=<repository_path>/rti_connext_dds-5.3.0/lib/x64Linux3gcc5.4.0`
 
 If you already have your own installation of RTI Connext DDS Secure, make sure that the environment variables mentioned above are correctly set to your installation. 
@@ -86,7 +88,7 @@ You can start the Admin Console through the launcher or simply by typing:
 `rtiadminconsole`
 If you don't see any information in the Admin Console check the security configuration as it is disabled by default. Go to View -> Preferences and select Security. The configuration should look similar to the example below. The path will be different depending on the install directory of the openFMB demo. 
 
-![Admin Console Secure Config](https://github.com/openfmb/openfmb-dds-demo/images/admin_console.png "Admin Console Security Preferences"). 
+![Admin Console Secure Config](://github.com/openfmb/openfmb-dds-demo/blob/master/images/admin_console.png "Admin Console Security Preferences"). 
 
  
 
