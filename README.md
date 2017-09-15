@@ -9,17 +9,31 @@ This repository contains an implementation of the simplified OpenFMB demonstrati
 
 The example has been configured and tested on Ubuntu 16.04 64 bit.
 
+You need the following components installed on your system:
+- Google Chrome
+- Git
+- Java
+
+To install Google Chrome download the package from https://www.google.com/chrome/browser/desktop/index.html and save the file. To install run:
+`sudo dpkg -i google-chrome-stable_current_amd64.deb`
+If you experience any errors or missing dependencies during the install run
+`sudo apt-get install -f`
+to install the missing dependcies and run the chrome install again
+`sudo dpkg -i google-chrome-stable_current_amd64.deb`
+
+The additional packages git, jre and jdk can be installed as follow:
+`sudo apt-get install default-jre default-jdk git`
+
+Once the packages are installed you can clone the repository:
+`git clone https://github.com/openfmb/openfmb-dds-demo`
+
 The repository includes an evaluation version of RTI Connext DDS Secure. To run the example you need to set the following environment variables:
 
 `NDDSHOME = <repository_path>/rti_connext_dds-5.3.0`
-
-`PATH = <repository_path>/rti_connext_dds-5.3.0/bin;$PATH`
-
-`LD_LIBRARY_PATH=<repository_path>/rti_connext_dds-5.3.0/lib/x64Linux3gcc5.4.0`
+`PATH = $NDDSHOME/bin;$PATH`
+`LD_LIBRARY_PATH=$NDDSHOME/lib/x64Linux3gcc5.4.0:$NDDSHOME/resource/app/lib/x64Linux2.6gcc4.1.1/:$LD_LIBRARY_PATH`
 
 If you already have your own installation of RTI Connext DDS Secure, make sure that the environment variables mentioned above are correctly set to your installation. 
-
-You need to have Chrome installed on your Ubuntu system.
 
 RTI Connext DDS Secure is commercial software provided for use with this demonstration under an Evaluation License.  Use of the demonstration is limited to uses compatible with that license.  You can find the license in the installation at <repository_path>/rti_connext_dds-5.3.0/RTI_License_Agreement.pdf.  A temporary license key to enable the software is included at <repository_path>/rti_connext_dds-5.3.0/rti_license.dat.
 
@@ -59,7 +73,10 @@ The demo consists of 5 different components:
 - openfmb-dds-loadpublisher. This component contains the load publisher simulator. 
 - openfmb-dds-hmi. This component contains the driver for the Web UI. 
 
-Maven project files are available for the different components. In order to build you must first build the openfmb-dds-common project followed by openfmb-dds-simulator, openfmb-dds-loadpublisher, and openfmb-dds-hmi. 
+Maven project files are available for the different components. Before building the RTI DDS jar file needs to be added to maven. This is done as follow:
+`mvn install:install-file -Dfile=$NDDSHOME/lib/java/nddsjava.jar -DgroupId=RTI -DartifactId=DDS -Dversion=5.3.0 -Dpackaging=jar`
+
+The maven project files are setup to use the RTI DDS jar file. The build order is openfmb-dds-common project followed by openfmb-dds-simulator, openfmb-dds-loadpublisher, and openfmb-dds-hmi. 
 
 ```
 cd openfmb-dds-common
@@ -88,7 +105,7 @@ You can start the Admin Console through the launcher or simply by typing:
 `rtiadminconsole`
 If you don't see any information in the Admin Console check the security configuration as it is disabled by default. Go to View -> Preferences and select Security. The configuration should look similar to the example below. The path will be different depending on the install directory of the openFMB demo. 
 
-![Admin Console Secure Config](https://github.com/openfmb/openfmb-dds-demo/blob/master/images/admin_console.png "Admin Console Security Preferences"). 
+![Admin Console Secure Config](https://github.com/openfmb/openfmb-dds-demo/images/admin_console.png "Admin Console Security Preferences"). 
 
  
 
