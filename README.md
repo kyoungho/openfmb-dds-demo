@@ -14,14 +14,18 @@ You need the following components installed on your system:
 - Git
 - Java
 
-To install Google Chrome download the package from https://www.google.com/chrome/browser/desktop/index.html and save the file. To install run:
+To install Google Chrome download the package from [Google](https://www.google.com/chrome/browser/desktop/index.html) and save the file. To install run:
 `sudo dpkg -i google-chrome-stable_current_amd64.deb`
 If you experience any errors or missing dependencies during the install run
+
 `sudo apt-get install -f`
+
 to install the missing dependcies and run the chrome install again
+
 `sudo dpkg -i google-chrome-stable_current_amd64.deb`
 
 The additional packages git, jre and jdk can be installed as follow:
+
 `sudo apt-get install default-jre default-jdk git`
 
 Once the packages are installed you can clone the repository:
@@ -30,7 +34,9 @@ Once the packages are installed you can clone the repository:
 The repository includes an evaluation version of RTI Connext DDS Secure. To run the example you need to set the following environment variables:
 
 `NDDSHOME = <repository_path>/rti_connext_dds-5.3.0`
+
 `PATH = $NDDSHOME/bin;$PATH`
+
 `LD_LIBRARY_PATH=$NDDSHOME/lib/x64Linux3gcc5.4.0:$NDDSHOME/resource/app/lib/x64Linux2.6gcc4.1.1/:$LD_LIBRARY_PATH`
 
 If you already have your own installation of RTI Connext DDS Secure, make sure that the environment variables mentioned above are correctly set to your installation. 
@@ -74,6 +80,7 @@ The demo consists of 5 different components:
 - openfmb-dds-hmi. This component contains the driver for the Web UI. 
 
 Maven project files are available for the different components. Before building the RTI DDS jar file needs to be added to maven. This is done as follow:
+
 `mvn install:install-file -Dfile=$NDDSHOME/lib/java/nddsjava.jar -DgroupId=RTI -DartifactId=DDS -Dversion=5.3.0 -Dpackaging=jar`
 
 The maven project files are setup to use the RTI DDS jar file. The build order is openfmb-dds-common project followed by openfmb-dds-simulator, openfmb-dds-loadpublisher, and openfmb-dds-hmi. 
@@ -105,7 +112,7 @@ You can start the Admin Console through the launcher or simply by typing:
 `rtiadminconsole`
 If you don't see any information in the Admin Console check the security configuration as it is disabled by default. Go to View -> Preferences and select Security. The configuration should look similar to the example below. The path will be different depending on the install directory of the openFMB demo. 
 
-![Admin Console Secure Config](https://github.com/openfmb/openfmb-dds-demo/images/admin_console.png "Admin Console Security Preferences"). 
+![Admin Console Secure Config](https://github.com/openfmb/openfmb-dds-demo/blob/master/images/admin_console.png "Admin Console Security Preferences"). 
 
  
 
