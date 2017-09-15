@@ -35,7 +35,7 @@ The repository includes an evaluation version of RTI Connext DDS Secure. To run 
 
 `NDDSHOME = <repository_path>/rti_connext_dds-5.3.0`
 
-`PATH = $NDDSHOME/bin;$PATH`
+`PATH = $NDDSHOME/bin:$PATH`
 
 `LD_LIBRARY_PATH=$NDDSHOME/lib/x64Linux3gcc5.4.0:$NDDSHOME/resource/app/lib/x64Linux2.6gcc4.1.1/:$LD_LIBRARY_PATH`
 
